@@ -26,5 +26,6 @@ platforms:
         - name: <%= test %>
           backend: local
           controls:
-            - <%= test %>
+            - default
+            - default-ipv6
 <% end %>

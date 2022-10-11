@@ -2,44 +2,30 @@ variable "name" {}
 
 variable "tags" {}
 
-variable "topic_prefix" {}
-
-variable "topic_name_override" {}
-
 provider "aws" {
   default_tags {
     tags = var.tags
   }
 }
 
-module "sns" {
+module "vpc" {
   source = "../../../"
+  name   = "kitchen-default-vpc"
+  tags   = { example = "true" }
 
-  name = var.name
-  tags = {
-    example = "true"
+  vpc = {
+    enable_ipv6 = false
   }
 }
-output "sns" { value = module.sns }
+output "vpc" { value = module.vpc }
 
-module "sns-prefix" {
+module "vpc-ipv6" {
   source = "../../../"
+  name   = "kitchen-default-ipv6-vpc"
+  tags   = { example = "true" }
 
-  name         = var.name
-  topic_prefix = var.topic_prefix
-  tags = {
-    example = "true"
+  vpc = {
+    enable_ipv6 = true
   }
 }
-output "sns-prefix" { value = module.sns-prefix }
-
-module "sns-override" {
-  source = "../../../"
-
-  name                = var.name
-  topic_name_override = var.topic_name_override
-  tags = {
-    example = "true"
-  }
-}
-output "sns-override" { value = module.sns-override }
+output "vpc-ipv6" { value = module.vpc-ipv6 }

@@ -1,24 +1,48 @@
+variable "create_flow_logs" {
+  type        = bool
+  description = "Whether or not to create flow logs for the VPC. Defaults to `true`, per AWS best practices."
+  default     = true
+}
+
+variable "flow_logs_kms_key_id" {
+  type        = string
+  description = "The ARN of the KMS Key to use when encrypting log data. Please note, after the AWS KMS CMK is disassociated from the log group, AWS CloudWatch Logs stops encrypting newly ingested data for the log group. All previously ingested data remains encrypted, and AWS CloudWatch Logs requires permissions for the CMK whenever the encrypted data is requested."
+  default     = null
+}
+
+variable "log_retention_days" {
+  type        = number
+  description = "The number of days to retain flow log records."
+  default     = 365
+}
+
 variable "name" {
   type        = string
-  description = "Short, descriptive name of the environment. All resources will be named using this value as a prefix. See [aws_sns_topic](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic#name) for more information on name restrictions / requirements."
+  description = "Short, descriptive name of the environment. All resources will be named using this value as a prefix."
 }
 
-variable "topic_prefix" {
-  description = "SNS Topic name prefix, will be appended to `var.name` if a value is supplied. See [aws_sns_topic](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic#name) for more information on name restrictions / requirements."
-  type        = string
-  default     = null
+variable "nat_gateway_count" {
+  type        = number
+  description = "Total number of NAT gateways to create. If set to `-1`, then a NAT gateway will be created per public subnet. If set to `0`, then no NAT gateways will be created. If set to another number, then that number of NAT gateways will be created, in order from the first available public subnet."
+  default     = -1
 }
 
-variable "topic_name_override" {
-  description = "Used if there is a need to specify a topic name outside of the standardized nomenclature. For example, if importing a topic that doesn't follow the standard naming formats. See [aws_sns_topic](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic#name) for more information on name restrictions / requirements."
-  type        = string
-  default     = null
+variable "public_cidrs" {
+  type        = list(string)
+  description = "List of IPv4 CIDR blocks used for public subnets"
+  default     = ["10.255.255.192/28", "10.255.255.208/28"]
 }
 
-variable "display_name" {
-  type        = string
-  description = "The display name for the topic. If not specified, the display name will be the same as the topic name."
-  default     = null
+variable "private_cidrs" {
+  type        = list(string)
+  description = "List of IPv4 CIDR blocks used for private subnets"
+  default     = ["10.255.255.224/28", "10.255.255.240/28"]
+}
+
+variable "restrict_nacls" {
+  type        = bool
+  description = "If this is set to `true`, network ACL resource created for these subnets will be left empty and deny all ingress and egress traffic. This is useful if you want to manage NACLs outside of this module. If set to `false`, `allow all` ingress and egress NACL rules are created for the subnets"
+  default     = false
 }
 
 variable "tags" {
@@ -27,122 +51,21 @@ variable "tags" {
   default     = {}
 }
 
-variable "policy" {
-  type        = string
-  description = "The JSON policy for the SNS topic. For more information about building AWS IAM policy documents with Terraform, see the [AWS IAM Policy Document Guide](https://learn.hashicorp.com/tutorials/terraform/aws-iam-policy?_ga=2.82257951.884055799.1634563672-272413849.1610471322)."
-  default     = null
-}
-
-variable "delivery_policy" {
-  type        = string
-  description = "The SNS delivery policy. More information can be found in the [AWS documentation](https://docs.aws.amazon.com/sns/latest/dg/sns-message-delivery-retries.html). Examples of using this variable can be found [here](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic)."
-  default     = null
-}
-
-variable "application_success_feedback_role_arn" {
-  type        = string
-  description = "ARN of the IAM role permitted to receive success feedback for this topic."
-  default     = null
-}
-
-variable "application_success_feedback_sample_rate" {
-  type        = number
-  description = "Percentage of success to sample."
-  default     = null
-}
-
-variable "application_failure_feedback_role_arn" {
-  type        = string
-  description = "ARN of the IAM role for failure feedback."
-  default     = null
-}
-
-variable "http_success_feedback_role_arn" {
-  type        = string
-  description = "ARN of the IAM role permitted to receive success feedback for this topic."
-  default     = null
-}
-
-variable "http_success_feedback_sample_rate" {
-  type        = number
-  description = "Percentage of success to sample."
-  default     = null
-}
-
-variable "http_failure_feedback_role_arn" {
-  type        = string
-  description = "ARN of the IAM role for failure feedback."
-  default     = null
-}
-
-variable "kms_master_key_id" {
-  type        = string
-  description = "The ID of an AWS-managed customer master key (CMK) for Amazon SNS or a custom CMK. For more information, see [Key Terms](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms)."
-  default     = null
-}
-
-variable "fifo_topic" {
-  type        = bool
-  description = "Boolean indicating whether or not to create a FIFO (first-in-first-out) topic (default is **false**). Note that if enabling a FIFO topic, this module will automatically append the topic name with **.fifo**, per the naming requirements for FIFO topics."
-  default     = false
-}
-
-variable "content_based_deduplication" {
-  type        = bool
-  description = "Enables content-based deduplication for FIFO topics. For more information, see the [related documentation](https://docs.aws.amazon.com/sns/latest/dg/fifo-message-dedup.html)"
-  default     = false
-}
-
-variable "lambda_success_feedback_role_arn" {
-  type        = string
-  description = "ARN of the IAM role permitted to receive success feedback for this topic."
-  default     = null
-}
-
-variable "lambda_success_feedback_sample_rate" {
-  type        = number
-  description = "Percentage of success to sample."
-  default     = null
-}
-
-variable "lambda_failure_feedback_role_arn" {
-  type        = string
-  description = "ARN of the IAM role for failure feedback."
-  default     = null
-}
-
-variable "sqs_success_feedback_role_arn" {
-  type        = string
-  description = "ARN of the IAM role permitted to receive success feedback for this topic."
-  default     = null
-}
-
-variable "sqs_success_feedback_sample_rate" {
-  type        = number
-  description = "Percentage of success to sample."
-  default     = null
-}
-
-variable "sqs_failure_feedback_role_arn" {
-  type        = string
-  description = "ARN of the IAM role for failure feedback."
-  default     = null
-}
-
-variable "firehose_success_feedback_role_arn" {
-  type        = string
-  description = "ARN of the IAM role permitted to receive success feedback for this topic."
-  default     = null
-}
-
-variable "firehose_success_feedback_sample_rate" {
-  type        = number
-  description = "Percentage of success to sample."
-  default     = null
-}
-
-variable "firehose_failure_feedback_role_arn" {
-  type        = string
-  description = "ARN of the IAM role for failure feedback."
-  default     = null
+variable "vpc" {
+  type        = map(string)
+  description = <<EOT
+  A map of VPC properties. Options in `local.vpc_defaults` can be overridden here.
+  Default values are:
+```
+  vpc_defaults = {
+    assign_generated_ipv6_cidr_block = false
+    cidr_block                       = "10.255.255.192/26"
+    enable_dns_support               = true
+    enable_dns_hostnames             = true
+    instance_tenancy                 = "default"
+  }
+```
+  See [aws_vpc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc) for more information on the options
+  EOT
+  default     = {}
 }

@@ -1,7 +1,4 @@
-name = "kitchen-default-example"
-
-topic_prefix        = "prefix-example"
-topic_name_override = "kitchen-override-example"
+name = "kitchen-default-vpc"
 
 tags = {
   environment = "dev"
