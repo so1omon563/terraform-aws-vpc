@@ -1,15 +1,20 @@
+provider "aws" {
+  default_tags {
+    tags = {
+      environment = "dev"
+      terraform   = "true"
+    }
+  }
+}
+
 module "vpc" {
   source = "../../"
 
-  vpc = {
-    nat_gateway_count = 1
-  }
+  nat_gateway_count = 1
 
   name = "example-single-natgw-vpc"
   tags = {
-    t_dcl         = "1"
-    t_environment = "DEV"
-    t_AppID       = "SVC00000"
+    example = "true"
   }
 }
 

@@ -1,6 +1,7 @@
 resource "aws_vpc" "vpc" {
-  # An AWS-provided /56 IPv6 CIDR block (can not configure address block or size)
-  assign_generated_ipv6_cidr_block = local.vpc.enable_ipv6
+  #checkov:skip=CKV2_AWS_11:"Ensure VPC flow logging is enabled in all VPCs" - Since this is a re-usable module, this needs to be able to be overridden.
+
+  assign_generated_ipv6_cidr_block = local.vpc.assign_generated_ipv6_cidr_block
 
   cidr_block           = local.vpc.cidr_block
   enable_dns_support   = local.vpc.enable_dns_support

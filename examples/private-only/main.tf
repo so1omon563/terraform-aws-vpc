@@ -1,3 +1,12 @@
+provider "aws" {
+  default_tags {
+    tags = {
+      environment = "dev"
+      terraform   = "true"
+    }
+  }
+}
+
 module "vpc" {
   source = "../../"
 
@@ -5,9 +14,7 @@ module "vpc" {
 
   name = "example-private-only-vpc"
   tags = {
-    t_dcl         = "1"
-    t_environment = "DEV"
-    t_AppID       = "SVC00000"
+    example = "true"
   }
 }
 
