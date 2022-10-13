@@ -1,5 +1,5 @@
 module "endpoints" {
-  source = "../../modules/gateway-endpoints/by-route-table"
+  source = "../../modules/gateway-endpoints//by-route-table"
   name   = module.vpc.name_prefix
   tags   = module.vpc.tags
 

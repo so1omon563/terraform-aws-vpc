@@ -14,7 +14,7 @@ terraform {
 
 # Configure the "base" NACL rules to allow whitelisted TCP and UDP ingress ports from anywhere
 module "base" {
-  source            = "../service-subnet-nacl-rules"
+  source            = "../service"
   nacl_id           = var.nacl_id
   ipv4_cidr_block   = local.all_ipv4
   ipv6_cidr_block   = local.all_ipv6

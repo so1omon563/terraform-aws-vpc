@@ -1,6 +1,5 @@
-# See https://github.com/terraform-providers/terraform-provider-aws/issues/10815
-# For reason why we can't remove an ipv6_cidr_block after assignment
 resource "aws_subnet" "subnet" {
+  #checkov:skip=CKV_AWS_130:"Ensure VPC subnets do not assign public IP by default" - Since this is a re-usable module, this needs to be able to be overridden.
   count             = local.subnet_count
   vpc_id            = var.vpc_id
   availability_zone = element(data.aws_availability_zones.az.names, count.index)

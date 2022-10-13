@@ -10,14 +10,9 @@ provider "aws" {
 module "vpc" {
   source = "../../"
 
-  private_cidrs = []
-
-  name = "example-public-only-vpc"
+  name = "example-vpc"
   tags = {
     example = "true"
   }
 }
-
-output "network" {
-  value = module.vpc
-}
+output "vpc" { value = module.vpc }

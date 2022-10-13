@@ -1,11 +1,26 @@
-provider "aws" { alias = "requester" }
-provider "aws" { alias = "accepter" }
+provider "aws" {
+  alias = "requester"
 
-locals {
-  tags = {
-    t_dcl         = "1"
-    t_environment = "DEV"
-    t_AppID       = "SVC00000"
+  default_tags {
+    tags = {
+      environment = "dev"
+      terraform   = "true"
+      accepter    = "false"
+      requester   = "true"
+    }
+  }
+}
+
+provider "aws" {
+  alias = "accepter"
+
+  default_tags {
+    tags = {
+      environment = "dev"
+      terraform   = "true"
+      accepter    = "true"
+      requester   = "false"
+    }
   }
 }
 
@@ -16,9 +31,10 @@ module "req" {
 
   source = "../.."
   name   = "requester-vpc"
-  tags   = local.tags
-
-  vpc           = { cidr = "10.1.0.0/16" }
+  tags = {
+    example = "true"
+  }
+  vpc           = { cidr_block = "10.1.0.0/16" }
   public_cidrs  = ["10.1.0.0/24", "10.1.1.0/24"]
   private_cidrs = ["10.1.16.0/24", "10.1.17.0/24"]
 }
@@ -30,9 +46,10 @@ module "acp" {
 
   source = "../.."
   name   = "accepter-vpc"
-  tags   = local.tags
-
-  vpc           = { cidr = "10.2.0.0/16" }
+  tags = {
+    example = "true"
+  }
+  vpc           = { cidr_block = "10.2.0.0/16" }
   public_cidrs  = ["10.2.0.0/24", "10.2.1.0/24"]
   private_cidrs = ["10.2.16.0/24", "10.2.17.0/24"]
 }
@@ -45,11 +62,12 @@ module "pcx" {
 
   source = "../../modules/peering"
   name   = "peering-in-region-example"
-  tags   = local.tags
-
+  tags = {
+    example = "true"
+  }
   auto_accept      = true
-  requester_vpc_id = module.req.vpc["id"]
-  accepter_vpc_id  = module.acp.vpc["id"]
+  requester_vpc_id = module.req.vpc.id
+  accepter_vpc_id  = module.acp.vpc.id
 }
 
 /*

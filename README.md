@@ -1,7 +1,7 @@
 # VPC
 
 Create a basic/standard VPC suitable for most cases.  The submodules allow extension of this root-level VPC to enable
-further customization of Subnets, NACLs, Gateway Endpoints, DHCP options, and VPN gateways.
+further customization of Flow Logs, NAT Gateways, Subnets, NACLs, Gateway Endpoints, DHCP options, VPC Peering, Additional CIDR Blocks, and VPN Gateways.
 
 In the basic configuration this module will create the public and private subnets (including route tables and NACL tables
 with open access), the associated Internet and NAT gateways, manage the VPC flow log retention period, and resources

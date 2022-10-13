@@ -1,15 +1,22 @@
+provider "aws" {
+  default_tags {
+    tags = {
+      environment = "dev"
+      terraform   = "true"
+    }
+  }
+}
+
 module "vpc" {
   source = "../../"
 
   vpc = {
-    enable_ipv6 = true
+    assign_generated_ipv6_cidr_block = true
   }
 
   name = "example-standard-ipv6-vpc"
   tags = {
-    t_dcl         = "1"
-    t_environment = "DEV"
-    t_AppID       = "SVC00000"
+    example = "true"
   }
 }
 
