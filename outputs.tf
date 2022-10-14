@@ -54,8 +54,8 @@ output "private_nacl" {
 }
 
 output "nat_gateways" {
-  decription = "A list of the NAT gateway ids created by this module."
-  value      = [for nat in aws_nat_gateway.natgw : { for key, value in nat : key => value if contains(local.output_filter, key) }]
+  description = "A list of the NAT gateway ids created by this module."
+  value       = [for nat in aws_nat_gateway.natgw : { for key, value in nat : key => value if contains(local.output_filter, key) }]
 }
 
 output "tags" {

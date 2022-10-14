@@ -21,9 +21,9 @@ No requirements.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_acp"></a> [acp](#module\_acp) | ../.. | n/a |
-| <a name="module_pcx"></a> [pcx](#module\_pcx) | ../../modules/peering | n/a |
-| <a name="module_req"></a> [req](#module\_req) | ../.. | n/a |
+| <a name="module_acp"></a> [acp](#module\_acp) | so1omon563/vpc/aws | 1.0.0 |
+| <a name="module_pcx"></a> [pcx](#module\_pcx) | so1omon563/vpc/aws//modules/peering | 1.0.0 |
+| <a name="module_req"></a> [req](#module\_req) | so1omon563/vpc/aws | 1.0.0 |
 
 ## Resources
 

@@ -18,8 +18,8 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_endpoints"></a> [endpoints](#module\_endpoints) | ../../modules/gateway-endpoints/by-route-table | n/a |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | ../../ | n/a |
+| <a name="module_endpoints"></a> [endpoints](#module\_endpoints) | so1omon563/vpc/aws//modules/gateway-endpoints/by-route-table | 1.0.0 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | so1omon563/vpc/aws | 1.0.0 |
 
 ## Resources
 

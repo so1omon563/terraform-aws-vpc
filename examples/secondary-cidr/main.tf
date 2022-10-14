@@ -8,7 +8,8 @@ provider "aws" {
 }
 
 module "vpc" {
-  source = "../../"
+  source  = "so1omon563/vpc/aws"
+  version = "1.0.0"
 
   name = "example-secondary-cidr-vpc"
   tags = {
@@ -16,20 +17,18 @@ module "vpc" {
   }
 }
 
-# resource "aws_vpc_ipv4_cidr_block_association" "cidr" {
-#   vpc_id     = module.vpc.vpc_id
-#   cidr_block = "10.0.0.0/16"
-# }
-
 module "secondary_cidr" {
-  source = "../../modules/additional-cidr-block-association"
+  source  = "so1omon563/vpc/aws//modules/additional-cidr-block-association"
+  version = "1.0.0"
 
   vpc_id     = module.vpc.vpc_id
   cidr_block = "10.0.0.0/16"
 }
 
 module "lambda_subnets" {
-  source      = "../../modules/subnets"
+  source  = "so1omon563/vpc/aws//modules/subnets"
+  version = "1.0.0"
+
   vpc_id      = module.vpc.vpc_id
   name        = module.vpc.name_prefix
   subnet_type = "lambda"

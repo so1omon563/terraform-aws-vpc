@@ -29,8 +29,10 @@ module "req" {
     aws = aws.requester
   }
 
-  source = "../.."
-  name   = "requester-vpc"
+  source  = "so1omon563/vpc/aws"
+  version = "1.0.0"
+
+  name = "requester-vpc"
   tags = {
     example = "true"
   }
@@ -44,8 +46,10 @@ module "acp" {
     aws = aws.accepter
   }
 
-  source = "../.."
-  name   = "accepter-vpc"
+  source  = "so1omon563/vpc/aws"
+  version = "1.0.0"
+
+  name = "accepter-vpc"
   tags = {
     example = "true"
   }
@@ -60,8 +64,10 @@ module "pcx" {
     aws.accepter  = aws.accepter
   }
 
-  source = "../../modules/peering"
-  name   = "peering-across-region-example"
+  source  = "so1omon563/vpc/aws//modules/peering"
+  version = "1.0.0"
+
+  name = "peering-across-region-example"
   tags = {
     example = "true"
   }

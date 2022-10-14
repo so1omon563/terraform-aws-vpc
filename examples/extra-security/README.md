@@ -20,16 +20,16 @@ No requirements.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_bastion-nacl"></a> [bastion-nacl](#module\_bastion-nacl) | ../../modules/subnet-nacl-rules/generic | n/a |
-| <a name="module_bastion-network"></a> [bastion-network](#module\_bastion-network) | ../../modules//subnets | n/a |
-| <a name="module_cache-network"></a> [cache-network](#module\_cache-network) | ../../modules//subnets | n/a |
-| <a name="module_endpoints"></a> [endpoints](#module\_endpoints) | ../../modules/gateway-endpoints//by-route-table | n/a |
-| <a name="module_postgres-nacl"></a> [postgres-nacl](#module\_postgres-nacl) | ../../modules/subnet-nacl-rules/service | n/a |
-| <a name="module_private-nacl"></a> [private-nacl](#module\_private-nacl) | ../../modules/subnet-nacl-rules/generic/ | n/a |
-| <a name="module_public-nacl"></a> [public-nacl](#module\_public-nacl) | ../../modules/subnet-nacl-rules//generic | n/a |
-| <a name="module_rds-network"></a> [rds-network](#module\_rds-network) | ../../modules//subnets | n/a |
-| <a name="module_redis-nacl"></a> [redis-nacl](#module\_redis-nacl) | ../../modules/subnet-nacl-rules/service | n/a |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | ../../ | n/a |
+| <a name="module_bastion-nacl"></a> [bastion-nacl](#module\_bastion-nacl) | so1omon563/vpc/aws//modules/subnet-nacl-rules/generic | 1.0.0 |
+| <a name="module_bastion-network"></a> [bastion-network](#module\_bastion-network) | so1omon563/vpc/aws//modules/subnets | 1.0.0 |
+| <a name="module_cache-network"></a> [cache-network](#module\_cache-network) | so1omon563/vpc/aws//modules/subnets | 1.0.0 |
+| <a name="module_endpoints"></a> [endpoints](#module\_endpoints) | so1omon563/vpc/aws//modules/gateway-endpoints//by-route-table | 1.0.0 |
+| <a name="module_postgres-nacl"></a> [postgres-nacl](#module\_postgres-nacl) | so1omon563/vpc/aws//modules/subnet-nacl-rules/service | 1.0.0 |
+| <a name="module_private-nacl"></a> [private-nacl](#module\_private-nacl) | so1omon563/vpc/aws//modules/subnet-nacl-rules/generic | 1.0.0 |
+| <a name="module_public-nacl"></a> [public-nacl](#module\_public-nacl) | so1omon563/vpc/aws//modules/subnet-nacl-rules/generic | 1.0.0 |
+| <a name="module_rds-network"></a> [rds-network](#module\_rds-network) | so1omon563/vpc/aws//modules/subnets | 1.0.0 |
+| <a name="module_redis-nacl"></a> [redis-nacl](#module\_redis-nacl) | so1omon563/vpc/aws//modules/subnet-nacl-rules/service | 1.0.0 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | so1omon563/vpc/aws | 1.0.0 |
 
 ## Resources
 

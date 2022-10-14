@@ -8,7 +8,8 @@ provider "aws" {
 }
 
 module "vpc" {
-  source = "../../"
+  source  = "so1omon563/vpc/aws"
+  version = "1.0.0"
 
   vpc = {
     assign_generated_ipv6_cidr_block = true
@@ -21,9 +22,11 @@ module "vpc" {
 }
 
 module "endpoints" {
-  source = "../../modules/gateway-endpoints/by-route-table"
-  name   = module.vpc.name_prefix
-  tags   = module.vpc.tags
+  source  = "so1omon563/vpc/aws//modules/gateway-endpoints/by-route-table"
+  version = "1.0.0"
+
+  name = module.vpc.name_prefix
+  tags = module.vpc.tags
 
   s3_route_table_ids       = module.vpc.private_route_table_ids[*]
   dynamodb_route_table_ids = module.vpc.private_route_table_ids[*]
