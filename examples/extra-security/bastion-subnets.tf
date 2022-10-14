@@ -1,5 +1,7 @@
 module "bastion-network" {
-  source = "../../modules//subnets"
+  source  = "so1omon563/vpc/aws//modules/subnets"
+  version = "1.0.0"
+
   vpc_id = module.vpc.vpc_id
 
   subnet_type = "bastion"
@@ -28,7 +30,9 @@ resource "aws_route" "ipv4_default" {
 
 # This opens port 22 from anywhere, so be sure to use your security group to narrow the scope
 module "bastion-nacl" {
-  source  = "../../modules/subnet-nacl-rules/generic"
+  source  = "so1omon563/vpc/aws//modules/subnet-nacl-rules/generic"
+  version = "1.0.0"
+
   nacl_id = module.bastion-network.nacl.id
 
   ingress_tcp_ports = [22]

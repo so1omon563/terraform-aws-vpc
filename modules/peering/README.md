@@ -60,5 +60,5 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_peering_connection"></a> [peering\_connection](#output\_peering\_connection) | n/a |
+| <a name="output_peering_connection"></a> [peering\_connection](#output\_peering\_connection) | A collection of outputs from the created VPC Peering Connection. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

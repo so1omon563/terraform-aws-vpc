@@ -57,7 +57,7 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_nacl"></a> [nacl](#output\_nacl) | n/a |
-| <a name="output_route_table_ids"></a> [route\_table\_ids](#output\_route\_table\_ids) | n/a |
-| <a name="output_subnets"></a> [subnets](#output\_subnets) | n/a |
+| <a name="output_nacl"></a> [nacl](#output\_nacl) | A collection of outputs from the NACL created by this module. |
+| <a name="output_route_table_ids"></a> [route\_table\_ids](#output\_route\_table\_ids) | A list of the route table ids created by this module. |
+| <a name="output_subnets"></a> [subnets](#output\_subnets) | A collection of outputs from the created Subnets. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

@@ -18,9 +18,9 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_lambda_subnets"></a> [lambda\_subnets](#module\_lambda\_subnets) | ../../modules/subnets | n/a |
-| <a name="module_secondary_cidr"></a> [secondary\_cidr](#module\_secondary\_cidr) | ../../modules/additional-cidr-block-association | n/a |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | ../../ | n/a |
+| <a name="module_lambda_subnets"></a> [lambda\_subnets](#module\_lambda\_subnets) | so1omon563/vpc/aws//modules/subnets | 1.0.0 |
+| <a name="module_secondary_cidr"></a> [secondary\_cidr](#module\_secondary\_cidr) | so1omon563/vpc/aws//modules/additional-cidr-block-association | 1.0.0 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | so1omon563/vpc/aws | 1.0.0 |
 
 ## Resources
 

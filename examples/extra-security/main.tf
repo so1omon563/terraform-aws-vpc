@@ -14,7 +14,8 @@ provider "aws" {
 }
 
 module "vpc" {
-  source = "../../"
+  source  = "so1omon563/vpc/aws"
+  version = "1.0.0"
 
   vpc = {
     cidr_block = local.cidr_block

@@ -80,16 +80,16 @@ Auto-generated technical documentation is created using [`terraform-docs`](https
 
 | Name | Description |
 |------|-------------|
-| <a name="output_dhcp_options_id"></a> [dhcp\_options\_id](#output\_dhcp\_options\_id) | n/a |
-| <a name="output_name_prefix"></a> [name\_prefix](#output\_name\_prefix) | n/a |
-| <a name="output_nat_gateways"></a> [nat\_gateways](#output\_nat\_gateways) | n/a |
-| <a name="output_private_nacl"></a> [private\_nacl](#output\_private\_nacl) | n/a |
-| <a name="output_private_route_table_ids"></a> [private\_route\_table\_ids](#output\_private\_route\_table\_ids) | n/a |
-| <a name="output_private_subnets"></a> [private\_subnets](#output\_private\_subnets) | n/a |
-| <a name="output_public_nacl"></a> [public\_nacl](#output\_public\_nacl) | n/a |
-| <a name="output_public_route_table_ids"></a> [public\_route\_table\_ids](#output\_public\_route\_table\_ids) | n/a |
-| <a name="output_public_subnets"></a> [public\_subnets](#output\_public\_subnets) | n/a |
-| <a name="output_tags"></a> [tags](#output\_tags) | n/a |
-| <a name="output_vpc"></a> [vpc](#output\_vpc) | n/a |
-| <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | n/a |
+| <a name="output_dhcp_options_id"></a> [dhcp\_options\_id](#output\_dhcp\_options\_id) | The ID of the DHCP options set created by this module. |
+| <a name="output_name_prefix"></a> [name\_prefix](#output\_name\_prefix) | The name prefix of the VPC. Output separately here for convenience. |
+| <a name="output_nat_gateways"></a> [nat\_gateways](#output\_nat\_gateways) | A list of the NAT gateway ids created by this module. |
+| <a name="output_private_nacl"></a> [private\_nacl](#output\_private\_nacl) | The ID of the private NACL created by this module. |
+| <a name="output_private_route_table_ids"></a> [private\_route\_table\_ids](#output\_private\_route\_table\_ids) | A list of the public route table ids created by this module. |
+| <a name="output_private_subnets"></a> [private\_subnets](#output\_private\_subnets) | A list of the private subnet ids created by this module. |
+| <a name="output_public_nacl"></a> [public\_nacl](#output\_public\_nacl) | The ID of the publc NACL created by this module. |
+| <a name="output_public_route_table_ids"></a> [public\_route\_table\_ids](#output\_public\_route\_table\_ids) | A list of the public route table ids created by this module. |
+| <a name="output_public_subnets"></a> [public\_subnets](#output\_public\_subnets) | A list of the public subnet ids created by this module. |
+| <a name="output_tags"></a> [tags](#output\_tags) | The tags of the VPC. Output separately here for convenience. |
+| <a name="output_vpc"></a> [vpc](#output\_vpc) | A collection of outputs from the created VPC. |
+| <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | The ID of the VPC. Output separately for convenience. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

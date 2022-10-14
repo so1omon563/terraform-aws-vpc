@@ -4,5 +4,6 @@ locals {
 }
 
 output "nat_gateways" {
-  value = [for nat in aws_nat_gateway.natgw : { for key, value in nat : key => value if !contains(local.output_filter, key) }]
+  description = "A collection of outputs from the created NAT Gateways."
+  value       = [for nat in aws_nat_gateway.natgw : { for key, value in nat : key => value if !contains(local.output_filter, key) }]
 }
