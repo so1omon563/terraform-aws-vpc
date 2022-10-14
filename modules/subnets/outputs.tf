@@ -6,13 +6,16 @@ locals {
 }
 
 output "subnets" {
-  value = [for subnet in aws_subnet.subnet : { for key, value in subnet : key => value if contains(local.output_filter, key) }]
+  description = "A collection of outputs from the created Subnets."
+  value       = [for subnet in aws_subnet.subnet : { for key, value in subnet : key => value if contains(local.output_filter, key) }]
 }
 
 output "route_table_ids" {
-  value = aws_route_table.route_table[*].id
+  description = "A list of the route table ids created by this module."
+  value       = aws_route_table.route_table[*].id
 }
 
 output "nacl" {
-  value = length(aws_network_acl.nacl) > 0 ? { for key, value in aws_network_acl.nacl[0] : key => value if contains(local.output_filter, key) } : null
+  description = "A collection of outputs from the NACL created by this module."
+  value       = length(aws_network_acl.nacl) > 0 ? { for key, value in aws_network_acl.nacl[0] : key => value if contains(local.output_filter, key) } : null
 }

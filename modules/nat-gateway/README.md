@@ -54,5 +54,5 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_nat_gateways"></a> [nat\_gateways](#output\_nat\_gateways) | n/a |
+| <a name="output_nat_gateways"></a> [nat\_gateways](#output\_nat\_gateways) | A collection of outputs from the created NAT Gateways. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

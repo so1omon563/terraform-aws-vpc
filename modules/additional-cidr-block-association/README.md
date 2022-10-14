@@ -44,5 +44,5 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_cidr_block_association"></a> [cidr\_block\_association](#output\_cidr\_block\_association) | n/a |
+| <a name="output_cidr_block_association"></a> [cidr\_block\_association](#output\_cidr\_block\_association) | A collection of outputs from the created CIDR Block Association. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

@@ -50,5 +50,5 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_log_group"></a> [log\_group](#output\_log\_group) | n/a |
+| <a name="output_log_group"></a> [log\_group](#output\_log\_group) | A collection of outputs from the created Flow Logs Log Group. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

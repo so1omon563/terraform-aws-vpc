@@ -52,6 +52,6 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_dynamodb"></a> [dynamodb](#output\_dynamodb) | n/a |
-| <a name="output_s3"></a> [s3](#output\_s3) | n/a |
+| <a name="output_dynamodb"></a> [dynamodb](#output\_dynamodb) | A collection of outputs from the created DynamoDB Gateway Endpoint. |
+| <a name="output_s3"></a> [s3](#output\_s3) | A collection of outputs from the created S3 Gateway Endpoint. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
