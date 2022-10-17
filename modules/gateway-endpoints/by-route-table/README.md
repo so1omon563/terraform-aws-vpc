@@ -4,7 +4,13 @@ Create S3 and DynamoDB gateway endpoint resources in a VPC - and associated rout
 
 This resource should be used if you want to add the gateway endpoints only to specific route tables and exclude others.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
 Auto-generated technical documentation is created using [`terraform-docs`](https://terraform-docs.io/)
+## Examples
+
+```hcl
+# See examples under the top level examples directory for more information on how to use this module.
+```
 
 ## Requirements
 
@@ -17,7 +23,7 @@ Auto-generated technical documentation is created using [`terraform-docs`](https
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.34.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.35.0 |
 
 ## Modules
 
@@ -52,4 +58,6 @@ No modules.
 |------|-------------|
 | <a name="output_dynamodb"></a> [dynamodb](#output\_dynamodb) | A collection of outputs from the created DynamoDB Gateway Endpoint. |
 | <a name="output_s3"></a> [s3](#output\_s3) | A collection of outputs from the created S3 Gateway Endpoint. |
+
+
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

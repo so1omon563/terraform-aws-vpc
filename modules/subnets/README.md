@@ -4,7 +4,13 @@ Create additional subnets in a VPC beyond what is already available to configure
 root VPC module.  This is useful for configuring service-specific subnets, or creating subnets after the addition of
 a secondary IPv4 CIDR allocation for a VPC.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
 Auto-generated technical documentation is created using [`terraform-docs`](https://terraform-docs.io/)
+## Examples
+
+```hcl
+# See examples under the top level examples directory for more information on how to use this module.
+```
 
 ## Requirements
 
@@ -17,7 +23,7 @@ Auto-generated technical documentation is created using [`terraform-docs`](https
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.34.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.35.0 |
 
 ## Modules
 
@@ -60,4 +66,6 @@ No modules.
 | <a name="output_nacl"></a> [nacl](#output\_nacl) | A collection of outputs from the NACL created by this module. |
 | <a name="output_route_table_ids"></a> [route\_table\_ids](#output\_route\_table\_ids) | A list of the route table ids created by this module. |
 | <a name="output_subnets"></a> [subnets](#output\_subnets) | A collection of outputs from the created Subnets. |
+
+
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

@@ -17,6 +17,7 @@ module "vpc" {
   }
 }
 
+# Create the additional CIDR block
 module "secondary_cidr" {
   source  = "so1omon563/vpc/aws//modules/additional-cidr-block-association"
   version = "1.0.0"
@@ -25,6 +26,7 @@ module "secondary_cidr" {
   cidr_block = "10.0.0.0/16"
 }
 
+# Create subnets for Lambda in the new CIDR block
 module "lambda_subnets" {
   source  = "so1omon563/vpc/aws//modules/subnets"
   version = "1.0.0"

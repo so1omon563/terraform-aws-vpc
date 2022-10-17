@@ -17,7 +17,13 @@ these limitations.
 
 Please review the available submodules and examples to determine what additional resources may be required for your use case.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
 Auto-generated technical documentation is created using [`terraform-docs`](https://terraform-docs.io/)
+## Examples
+
+```hcl
+# See examples under the top level examples directory for more information on how to use this module.
+```
 
 ## Requirements
 
@@ -30,7 +36,7 @@ Auto-generated technical documentation is created using [`terraform-docs`](https
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.34.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.35.0 |
 
 ## Modules
 
@@ -92,4 +98,6 @@ Auto-generated technical documentation is created using [`terraform-docs`](https
 | <a name="output_tags"></a> [tags](#output\_tags) | The tags of the VPC. Output separately here for convenience. |
 | <a name="output_vpc"></a> [vpc](#output\_vpc) | A collection of outputs from the created VPC. |
 | <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | The ID of the VPC. Output separately for convenience. |
+
+
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

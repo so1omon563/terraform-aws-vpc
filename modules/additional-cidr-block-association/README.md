@@ -4,7 +4,13 @@ Used to create secondary CIDR Block in a VPC.
 
 See <https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#add-cidr-block-restrictions> for information on Secondary CIDR Block limitations.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
 Auto-generated technical documentation is created using [`terraform-docs`](https://terraform-docs.io/)
+## Examples
+
+```hcl
+# See examples under the top level examples directory for more information on how to use this module.
+```
 
 ## Requirements
 
@@ -17,7 +23,7 @@ Auto-generated technical documentation is created using [`terraform-docs`](https
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.34.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.35.0 |
 
 ## Modules
 
@@ -45,4 +51,6 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_cidr_block_association"></a> [cidr\_block\_association](#output\_cidr\_block\_association) | A collection of outputs from the created CIDR Block Association. |
+
+
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
