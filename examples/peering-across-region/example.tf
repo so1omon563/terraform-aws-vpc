@@ -24,6 +24,7 @@ provider "aws" {
   }
 }
 
+# Create the requester VPC
 module "req" {
   providers = {
     aws = aws.requester
@@ -41,6 +42,7 @@ module "req" {
   private_cidrs = ["10.1.16.0/24", "10.1.17.0/24"]
 }
 
+# Create the accepter VPC
 module "acp" {
   providers = {
     aws = aws.accepter
@@ -58,6 +60,7 @@ module "acp" {
   private_cidrs = ["10.2.16.0/24", "10.2.17.0/24"]
 }
 
+# Create the peering connection
 module "pcx" {
   providers = {
     aws.requester = aws.requester
@@ -76,9 +79,8 @@ module "pcx" {
   accepter_vpc_id  = module.acp.vpc.id
 }
 
-/*
-** Create route table entries on each side to allow traffic to traverse the VPC peering connection
-*/
+
+# Create route table entries on each side to allow traffic to traverse the VPC peering connection
 resource "aws_route" "req_routes" {
   provider       = aws.requester
   count          = length(module.req.private_route_table_ids)

@@ -1,11 +1,117 @@
 # VPC Peering In Region
 
-Usage examples can be found in the `*.tf` source files.
-
 Example demonstrates creating a VPC Peering Connection in the same region within the same account.
 
 Example shows using Default Tags in the provider as well as passing additional tags into the resource.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+
+## Examples
+
+```hcl
+provider "aws" {
+  alias = "requester"
+
+  default_tags {
+    tags = {
+      environment = "dev"
+      terraform   = "true"
+      accepter    = "false"
+      requester   = "true"
+    }
+  }
+}
+
+provider "aws" {
+  alias = "accepter"
+
+  default_tags {
+    tags = {
+      environment = "dev"
+      terraform   = "true"
+      accepter    = "true"
+      requester   = "false"
+    }
+  }
+}
+
+# Create the requester VPC
+module "req" {
+  providers = {
+    aws = aws.requester
+  }
+
+  source  = "so1omon563/vpc/aws"
+  version = "1.0.0"
+
+  name = "requester-vpc"
+  tags = {
+    example = "true"
+  }
+  vpc           = { cidr_block = "10.1.0.0/16" }
+  public_cidrs  = ["10.1.0.0/24", "10.1.1.0/24"]
+  private_cidrs = ["10.1.16.0/24", "10.1.17.0/24"]
+}
+
+# Create the accepter VPC
+module "acp" {
+  providers = {
+    aws = aws.accepter
+  }
+
+  source  = "so1omon563/vpc/aws"
+  version = "1.0.0"
+
+  name = "accepter-vpc"
+  tags = {
+    example = "true"
+  }
+  vpc           = { cidr_block = "10.2.0.0/16" }
+  public_cidrs  = ["10.2.0.0/24", "10.2.1.0/24"]
+  private_cidrs = ["10.2.16.0/24", "10.2.17.0/24"]
+}
+
+# Create the peering connection
+module "pcx" {
+  providers = {
+    aws.requester = aws.requester
+    aws.accepter  = aws.accepter
+  }
+
+  source  = "so1omon563/vpc/aws//modules/peering"
+  version = "1.0.0"
+
+  name = "peering-in-region-example"
+  tags = {
+    example = "true"
+  }
+  auto_accept      = true
+  requester_vpc_id = module.req.vpc.id
+  accepter_vpc_id  = module.acp.vpc.id
+}
+
+# Create route table entries on each side to allow traffic to traverse the VPC peering connection
+resource "aws_route" "req_routes" {
+  provider       = aws.requester
+  count          = length(module.req.private_route_table_ids)
+  route_table_id = module.req.private_route_table_ids[count.index]
+
+  destination_cidr_block    = "10.2.0.0/16"
+  vpc_peering_connection_id = module.pcx.peering_connection.id
+}
+
+resource "aws_route" "acp_routes" {
+  provider       = aws.accepter
+  count          = length(module.acp.private_route_table_ids)
+  route_table_id = module.acp.private_route_table_ids[count.index]
+
+  destination_cidr_block    = "10.1.0.0/16"
+  vpc_peering_connection_id = module.pcx.peering_connection.id
+}
+
+output "peering" { value = module.pcx }
+```
+
 ## Requirements
 
 No requirements.
@@ -14,8 +120,8 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws.accepter"></a> [aws.accepter](#provider\_aws.accepter) | 4.34.0 |
-| <a name="provider_aws.requester"></a> [aws.requester](#provider\_aws.requester) | 4.34.0 |
+| <a name="provider_aws.accepter"></a> [aws.accepter](#provider\_aws.accepter) | 4.35.0 |
+| <a name="provider_aws.requester"></a> [aws.requester](#provider\_aws.requester) | 4.35.0 |
 
 ## Modules
 
@@ -41,4 +147,6 @@ No inputs.
 | Name | Description |
 |------|-------------|
 | <a name="output_peering"></a> [peering](#output\_peering) | n/a |
+
+
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

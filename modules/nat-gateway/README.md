@@ -6,7 +6,13 @@ Would be used if you built a VPC with only Public Subnets, and now want to add i
 
 This module will automatically add routes to all private route tables. If additional private subnets are created, it will need to be run again to add the new routes.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
 Auto-generated technical documentation is created using [`terraform-docs`](https://terraform-docs.io/)
+## Examples
+
+```hcl
+# See examples under the top level examples directory for more information on how to use this module.
+```
 
 ## Requirements
 
@@ -19,7 +25,7 @@ Auto-generated technical documentation is created using [`terraform-docs`](https
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.34.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.35.0 |
 
 ## Modules
 
@@ -55,4 +61,6 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_nat_gateways"></a> [nat\_gateways](#output\_nat\_gateways) | A collection of outputs from the created NAT Gateways. |
+
+
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

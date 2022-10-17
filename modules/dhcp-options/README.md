@@ -4,7 +4,13 @@ Create a DHCP option set and associate it with the provided VPC.  If configuring
 know that this module hard-codes the node type to type 2 (P-node), as AWS VPCs do not support multicast or broadcast
 traffic.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
 Auto-generated technical documentation is created using [`terraform-docs`](https://terraform-docs.io/)
+## Examples
+
+```hcl
+# See examples under the top level examples directory for more information on how to use this module.
+```
 
 ## Requirements
 
@@ -17,7 +23,7 @@ Auto-generated technical documentation is created using [`terraform-docs`](https
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.34.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.35.0 |
 
 ## Modules
 
@@ -49,4 +55,6 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_id"></a> [id](#output\_id) | The ID of the created DHCP Options Set. |
+
+
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

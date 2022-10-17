@@ -6,6 +6,14 @@ Requires that at least 1 subnet already exist in the VPC.
 
 This resource should be used if you want to add route propagation to all route tables in the VPC.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+
+## Examples
+
+```hcl
+# See examples under the top level examples directory for more information on how to use this module.
+```
+
 ## Requirements
 
 | Name | Version |
@@ -17,7 +25,7 @@ This resource should be used if you want to add route propagation to all route t
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.34.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.35.0 |
 
 ## Modules
 
@@ -49,4 +57,6 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_vpn_gateway_id"></a> [vpn\_gateway\_id](#output\_vpn\_gateway\_id) | n/a |
+
+
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

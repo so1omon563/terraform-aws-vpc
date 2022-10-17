@@ -15,7 +15,13 @@ The NACL rule numbers used by this module will strive to stay above 25000, so th
 room to work.  It is suggested that any rules created outside of this module on the same NACL table use rule numbers lower
 then 15000 to minimize the chance for conflict.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
 Auto-generated technical documentation is created using [`terraform-docs`](https://terraform-docs.io/)
+## Examples
+
+```hcl
+# See examples under the top level examples directory for more information on how to use this module.
+```
 
 ## Requirements
 
@@ -28,7 +34,7 @@ Auto-generated technical documentation is created using [`terraform-docs`](https
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.34.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.35.0 |
 
 ## Modules
 
@@ -71,4 +77,6 @@ Auto-generated technical documentation is created using [`terraform-docs`](https
 ## Outputs
 
 No outputs.
+
+
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
