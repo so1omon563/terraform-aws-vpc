@@ -1,6 +1,6 @@
 variable "amazon_side_asn" {
   type        = number
-  description = "The Autonomous System Number for the AWS side of the gateway. Default value compatible with Pearson Cloud Connect (NaaS)"
+  description = "The Autonomous System Number for the AWS side of the gateway."
   default     = null
 }
 
