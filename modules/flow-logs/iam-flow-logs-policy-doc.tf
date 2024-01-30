@@ -23,7 +23,6 @@ data "aws_iam_policy_document" "logs" {
       "logs:DescribeLogGroups",
       "logs:DescribeLogStreams"
     ]
-    #tfsec:ignore:aws-iam-no-policy-wildcards - This wildcard is intentional.
     resources = [
       aws_cloudwatch_log_group.flow-logs.arn,
       format("%s:log-stream:*", aws_cloudwatch_log_group.flow-logs.arn)

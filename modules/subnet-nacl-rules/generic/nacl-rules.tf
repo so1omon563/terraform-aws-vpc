@@ -6,7 +6,6 @@ resource "aws_network_acl_rule" "ipv4-tcp-egress" {
   rule_number    = 29000 + count.index
   rule_action    = "allow"
   protocol       = 6
-  #tfsec:ignore:aws-vpc-no-public-egress-acl - This needs to be able to be configured with open egress if desired.
   cidr_block = local.all_ipv4
   from_port  = local.egress_tcp_whitelist[count.index]
   to_port    = local.egress_tcp_whitelist[count.index]
@@ -20,7 +19,6 @@ resource "aws_network_acl_rule" "ipv6-tcp-egress" {
   rule_number    = aws_network_acl_rule.ipv4-tcp-egress[count.index].rule_number + 500
   rule_action    = aws_network_acl_rule.ipv4-tcp-egress[count.index].rule_action
   protocol       = aws_network_acl_rule.ipv4-tcp-egress[count.index].protocol
-  #tfsec:ignore:aws-vpc-no-public-egress-acl - This needs to be able to be configured with open egress if desired.
   ipv6_cidr_block = local.all_ipv6
   from_port       = aws_network_acl_rule.ipv4-tcp-egress[count.index].from_port
   to_port         = aws_network_acl_rule.ipv4-tcp-egress[count.index].to_port
@@ -33,7 +31,6 @@ resource "aws_network_acl_rule" "ipv4-udp-egress" {
   rule_number    = 30000 + count.index
   rule_action    = "allow"
   protocol       = 17
-  #tfsec:ignore:aws-vpc-no-public-egress-acl - This needs to be able to be configured with open egress if desired.
   cidr_block = local.all_ipv4
   from_port  = local.egress_udp_whitelist[count.index]
   to_port    = local.egress_udp_whitelist[count.index]
@@ -46,7 +43,6 @@ resource "aws_network_acl_rule" "ipv6-udp-egress" {
   rule_number    = aws_network_acl_rule.ipv4-udp-egress[count.index].rule_number + 500
   rule_action    = aws_network_acl_rule.ipv4-udp-egress[count.index].rule_action
   protocol       = aws_network_acl_rule.ipv4-udp-egress[count.index].protocol
-  #tfsec:ignore:aws-vpc-no-public-egress-acl - This needs to be able to be configured with open egress if desired.
   ipv6_cidr_block = local.all_ipv6
   from_port       = aws_network_acl_rule.ipv4-udp-egress[count.index].from_port
   to_port         = aws_network_acl_rule.ipv4-udp-egress[count.index].to_port
@@ -112,7 +108,6 @@ resource "aws_network_acl_rule" "ipv4-tcp-ingress-ephemeral" {
   rule_number    = aws_network_acl_rule.ipv4-tcp-egress[count.index].rule_number + 250
   rule_action    = aws_network_acl_rule.ipv4-tcp-egress[count.index].rule_action
   protocol       = aws_network_acl_rule.ipv4-tcp-egress[count.index].protocol
-  #tfsec:ignore:aws-vpc-no-public-ingress-acl - This needs to be able to be configured with open ingress if desired.
   cidr_block = aws_network_acl_rule.ipv4-tcp-egress[count.index].cidr_block
   from_port  = 1024
   to_port    = 65535
@@ -125,7 +120,6 @@ resource "aws_network_acl_rule" "ipv6-tcp-ingress-ephemeral" {
   rule_number    = aws_network_acl_rule.ipv6-tcp-egress[count.index].rule_number + 250
   rule_action    = aws_network_acl_rule.ipv6-tcp-egress[count.index].rule_action
   protocol       = aws_network_acl_rule.ipv6-tcp-egress[count.index].protocol
-  #tfsec:ignore:aws-vpc-no-public-ingress-acl - This needs to be able to be configured with open ingress if desired.
   ipv6_cidr_block = aws_network_acl_rule.ipv6-udp-egress[count.index].ipv6_cidr_block
   from_port       = 1024
   to_port         = 65535
@@ -138,7 +132,6 @@ resource "aws_network_acl_rule" "ipv4-udp-ingress-ephemeral" {
   rule_number    = aws_network_acl_rule.ipv4-udp-egress[count.index].rule_number + 250
   rule_action    = aws_network_acl_rule.ipv4-udp-egress[count.index].rule_action
   protocol       = aws_network_acl_rule.ipv4-udp-egress[count.index].protocol
-  #tfsec:ignore:aws-vpc-no-public-ingress-acl - This needs to be able to be configured with open ingress if desired.
   cidr_block = aws_network_acl_rule.ipv4-udp-egress[count.index].cidr_block
   from_port  = 1024
   to_port    = 65535
@@ -151,7 +144,6 @@ resource "aws_network_acl_rule" "ipv6-udp-ingress-ephemeral" {
   rule_number    = aws_network_acl_rule.ipv6-udp-egress[count.index].rule_number + 250
   rule_action    = aws_network_acl_rule.ipv6-udp-egress[count.index].rule_action
   protocol       = aws_network_acl_rule.ipv6-udp-egress[count.index].protocol
-  #tfsec:ignore:aws-vpc-no-public-ingress-acl - This needs to be able to be configured with open ingress if desired.
   ipv6_cidr_block = aws_network_acl_rule.ipv6-udp-egress[count.index].ipv6_cidr_block
   from_port       = 1024
   to_port         = 65535
