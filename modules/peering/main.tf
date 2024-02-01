@@ -2,15 +2,11 @@
 * Auto-generated technical documentation is created using [`terraform-docs`](https://terraform-docs.io/)
 */
 terraform {
-  required_version = ">= 0.14"
+  required_version = ">= 1.5"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = ">= 3.38"
-      configuration_aliases = [
-        aws.accepter,
-        aws.requester,
-      ]
+      version = ">= 4.0"
     }
   }
 }

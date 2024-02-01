@@ -7,7 +7,7 @@ Requires that at least 1 subnet already exist in the VPC.
 This resource should be used if you want to add route propagation to all route tables in the VPC.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
-
+Auto-generated technical documentation is created using [`terraform-docs`](https://terraform-docs.io/)
 ## Examples
 
 ```hcl
@@ -18,14 +18,14 @@ This resource should be used if you want to add route propagation to all route t
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.12.31, < 2.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.32 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.38.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.34.0 |
 
 ## Modules
 

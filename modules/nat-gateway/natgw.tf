@@ -1,6 +1,6 @@
 resource "aws_eip" "eip" {
-  count = local.natgw_count
-  vpc   = true
+  count  = local.natgw_count
+  domain = "vpc"
   tags = merge(local.tags,
     {
       Name = format("%s-nat", var.name)
