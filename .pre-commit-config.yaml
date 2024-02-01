@@ -28,3 +28,15 @@ repos:
         args:
           - --hook-config=--add-to-existing-file=true # Boolean. true or false
           - --args=--config=.terraform-docs.yml
+  - repo: local
+    hooks:
+      - id: cleanup.sh
+        name: cleanup.sh
+        entry: scripts/cleanup.sh
+        language: script
+        pass_filenames: false
+      - id: tf-test.sh
+        name: tf-test.sh
+        entry: scripts/tf-test.sh
+        language: script
+        pass_filenames: false
