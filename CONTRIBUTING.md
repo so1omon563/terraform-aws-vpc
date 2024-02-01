@@ -43,7 +43,7 @@ To make a good faith effort to ensure these criteria are met, we are requiring t
 
 The DCO is an attestation attached to every contribution made by every developer. In the commit message of the contribution, the developer simply adds a Signed-off-by statement and thereby agrees to the DCO, which you can find below or at <http://developercertificate.org/>.
 
-```
+```text
 Developer's Certificate of Origin 1.1
 
 By making a contribution to this project, I certify that:
@@ -76,11 +76,13 @@ By making a contribution to this project, I certify that:
 
 The DCO requires a sign-off message in the following format appear on each commit in the pull request:
 
-    Signed-off-by: Fake Name <fake.name@fakemail.com>
+```text
+Signed-off-by: Fake Name <fake.name@fakemail.com>
+```
 
 The DCO text can either be manually added to your commit body, or you can add either **-s** or **--signoff** to your usual git commit commands. If you forget to add the sign-off you can also amend a previous commit with the sign-off by running **git commit --amend -s**. If you've pushed your changes to Github already you'll need to force push your branch after this with **git push -f**.
 
-# Technical Requirements
+## Technical Requirements
 
 Testing and pre-commit checks are performed using a docker image specified in [.image](.image). This image is maintained [here](https://github.com/so1omon563/tf_testing_image).
 
@@ -97,63 +99,63 @@ We also suggest ensuring that you have your `awscli` environment set up, and usi
 
 You will need to set up the required `pre-commit` git hooks to ensure that your commits are valid. You can see the specific hooks that are required in [pre-commit-config.yaml](pre-commit-config.yaml).
 
-Run script to set .githooks
+Run script to set .githooks from the root of the repository
 
-    scripts/githooks.sh
+```bash
+scripts/githooks.sh
+```
 
 This will ensure that `pre-commit` is run before each commit.
 
-## Technical requirements for testing using `kitchen-terraform` and `inspec`
+## Technical requirements for testing
 
-**Note that any `kitchen-terraform` tests will create live infrastructure that incurs cost. Make sure that you destroy it after each test.**
+**Note that some automated tests are run as a part of the pre-commit process. Those tests are designed to not incur any cost, as they do not create any live infrastructure.**
 
 We are using the same image for our testing as we use for pre-commit, so only one image is required.
 
 You can call the image by issuing the following command from the root of the project:
 
-    ./testing_image
+```bash
+./tf_image
+```
 
 This will start the container and mount the project directory into the container. It also will mount your local user's `.aws` and and `.ssh` directories into the container. This allows for you to use your own AWS credentials and SSH keys.
 
 ### AWS authentication for testing
 
-We do not have a dedicated AWS account for testing purposes, so we require using the credentials of the user that runs the tests. You can use the `aws-runas` utility to help with this. It is installed in the image.
+We do not have a dedicated AWS account for testing purposes, so, for any testing that requires creating actual infrastructure, we require using the credentials of the user that runs the tests. You can use the `aws-runas` utility to help with this. It is installed in the image.
 
-**Remember that testing may incur cost.**
+**Remember that some testing MAY incur cost.**
 
 If you wish to pass in your credentials to the container at runtime, you can do so by running the following command (assuming you have `aws-runas` installed locally):
 
-    aws-runas -E <profile_name> ./testing_image
+```bash
+aws-runas -E <profile_name> ./tf_image
+```
 
 This will set the appropriate `AWS_*` environment variables in the container.
 
 Another useful option is to use the [EC2 metatdata server](https://mmmorris1975.github.io/aws-runas/metadata_credentials.html) built in to `aws-runas`.
 
-### Running `kitchen-terraform` tests
+### Running tests
 
-Once inside the container, with your AWS credentials set, you can run the tests by running the following command:
+Once inside the container, with your AWS credentials set, you can run the existing automated tests by running the following command:
 
-    bundle exec kitchen test
+```bash
+scripts/tf-test.sh
+```
 
-Note that if using `aws-runas` in the container to set your AWS profile, you will need to call it with the -E flag, like so:
-
-    aws-runas -E <profile_name> bundle exec kitchen test
-
-If the test fails, you can run the individual pieces to create, verify, and destroy if required.
-
-    bundle exec kitchen converge
-    bundle exec kitchen verify
-    bundle exec kitchen destroy
+This will run the pre-defined `terraform test` based tests under the `test` directory.
 
 Note that if using `aws-runas` in the container to set your AWS profile, you will need to call it with the -E flag, like so:
 
-    aws-runas -E <profile_name> bundle exec kitchen converge
-    aws-runas -E <profile_name> bundle exec kitchen verify
-    aws-runas -E <profile_name> bundle exec kitchen destroy
+```bash
+aws-runas -E <profile_name> scripts/tf-test.sh
+```
 
-# Processes
+## Processes
 
-## Versioning
+### Versioning
 
 This module follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
@@ -163,7 +165,7 @@ Tags are automatically created when a Pull Request is merged by including `#majo
 
 Tags should never be manually added to a project.
 
-## Branching
+### Branching
 
 Please note that we follow a trunk based development model, with `main` as the default branch of record.
 
@@ -173,7 +175,9 @@ Branch names should begin with the user's GitHub name followed by a `-`, then a 
 
 Branch descriptors should begin with one of the following prefixes and should use dashes `-` as separators:
 
-    feature-
-    bug-
+```text
+feature-
+bug-
+```
 
 An example of a branch name would be `so1omon563-feature-add-dco-sign-off`.

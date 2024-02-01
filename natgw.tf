@@ -1,8 +1,8 @@
 
 resource "aws_eip" "eip" {
-  count = local.natgw_count
-  vpc   = true
-  tags  = merge(local.tags, { Name = format("%s-nat", var.name) })
+  count  = local.natgw_count
+  domain = "vpc"
+  tags   = merge(local.tags, { Name = format("%s-nat", var.name) })
 
   depends_on = [aws_internet_gateway.igw]
 }
