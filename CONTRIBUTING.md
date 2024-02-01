@@ -107,9 +107,9 @@ scripts/githooks.sh
 
 This will ensure that `pre-commit` is run before each commit.
 
-## Technical requirements for testing
+## Technical requirements for testing (also a part of pre-commit)
 
-**Note that some automated tests are run as a part of the pre-commit process. Those tests are designed to not incur any cost, as they do not create any live infrastructure.**
+**Note that some automated tests are run as a part of the pre-commit process. Those tests are designed to not incur any cost, as they do not create any live infrastructure. They DO require AWS credential being set in order to run the tests**
 
 We are using the same image for our testing as we use for pre-commit, so only one image is required.
 
