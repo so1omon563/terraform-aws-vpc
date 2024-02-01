@@ -13,7 +13,7 @@ locals {
 
 module "vpc" {
   source  = "so1omon563/vpc/aws"
-  version = "1.0.0"
+  version = "2.0.0"
 
   vpc = {
     cidr_block = local.cidr_block
@@ -32,7 +32,7 @@ module "vpc" {
 module "vpn" {
 
   source  = "so1omon563/vpc/aws//modules/vpn-gateway/by-route-table"
-  version = "1.0.0"
+  version = "2.0.0"
 
   name = module.vpc.name_prefix
   tags = module.vpc.tags

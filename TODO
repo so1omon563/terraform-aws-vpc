@@ -1,7 +1,5 @@
 # TODO - Add additional tests for submodules, using examples as a guide
 
-# TODO - Update examples to use real module sources
-
 # TODO - add checks throughout the module
 
 # TODO - add the ability to create fully custom named-resources (subnets etc) so this module will be better suited for importing existing VPCs
