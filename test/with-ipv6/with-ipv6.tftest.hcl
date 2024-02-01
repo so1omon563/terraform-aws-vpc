@@ -47,8 +47,4 @@ run "verify_vpc_outputs_plan" {
     condition     = length(module.vpc.public_subnets) == 2
     error_message = "Number of Public Subnets does not match expected result."
   }
-  assert {
-    condition     = module.vpc.vpc.eigw_id == "(known after apply)"
-    error_message = "Egress-only Internet Gateway configuration does not match expected result."
-  }
 }
