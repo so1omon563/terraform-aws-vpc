@@ -1,6 +1,6 @@
 locals {
   output_filter = [
-    "id", "arn", "assign_generated_ipv6_cidr_block", "enable_dns_hostnames", "enable_dns_support", "ipv6_cidr_block",
+    "id", "arn", "assign_generated_ipv6_cidr_block", "enable_dns_hostnames", "enable_dns_support", "cidr_block", "ipv6_cidr_block",
     "private_ip", "public_ip", "subnet_id"
   ]
 }
@@ -60,7 +60,7 @@ output "nat_gateways" {
 
 output "tags" {
   description = "The tags of the VPC. Output separately here for convenience."
-  value       = aws_vpc.vpc.tags
+  value       = aws_vpc.vpc.tags_all
 }
 
 output "name_prefix" {
