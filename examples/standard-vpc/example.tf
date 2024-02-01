@@ -9,7 +9,7 @@ provider "aws" {
 
 module "vpc" {
   source  = "so1omon563/vpc/aws"
-  version = "1.0.0"
+  version = "2.0.0"
 
   name = "example-standard-vpc"
   tags = {
@@ -19,7 +19,7 @@ module "vpc" {
 
 module "endpoints" {
   source  = "so1omon563/vpc/aws//modules/gateway-endpoints/by-route-table"
-  version = "1.0.0"
+  version = "2.0.0"
 
   name = module.vpc.name_prefix
   tags = module.vpc.tags

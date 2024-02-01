@@ -31,7 +31,7 @@ module "req" {
   }
 
   source  = "so1omon563/vpc/aws"
-  version = "1.0.0"
+  version = "2.0.0"
 
   name = "requester-vpc"
   tags = {
@@ -49,7 +49,7 @@ module "acp" {
   }
 
   source  = "so1omon563/vpc/aws"
-  version = "1.0.0"
+  version = "2.0.0"
 
   name = "accepter-vpc"
   tags = {
@@ -68,7 +68,7 @@ module "pcx" {
   }
 
   source  = "so1omon563/vpc/aws//modules/peering"
-  version = "1.0.0"
+  version = "2.0.0"
 
   name = "peering-across-region-example"
   tags = {

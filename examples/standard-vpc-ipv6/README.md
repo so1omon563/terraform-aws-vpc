@@ -20,7 +20,7 @@ provider "aws" {
 
 module "vpc" {
   source  = "so1omon563/vpc/aws"
-  version = "1.0.0"
+  version = "2.0.0"
 
   vpc = {
     assign_generated_ipv6_cidr_block = true
@@ -34,7 +34,7 @@ module "vpc" {
 
 module "endpoints" {
   source  = "so1omon563/vpc/aws//modules/gateway-endpoints/by-route-table"
-  version = "1.0.0"
+  version = "2.0.0"
 
   name = module.vpc.name_prefix
   tags = module.vpc.tags
@@ -60,8 +60,8 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_endpoints"></a> [endpoints](#module\_endpoints) | so1omon563/vpc/aws//modules/gateway-endpoints/by-route-table | 1.0.0 |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | so1omon563/vpc/aws | 1.0.0 |
+| <a name="module_endpoints"></a> [endpoints](#module\_endpoints) | so1omon563/vpc/aws//modules/gateway-endpoints/by-route-table | 2.0.0 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | so1omon563/vpc/aws | 2.0.0 |
 
 ## Resources
 
