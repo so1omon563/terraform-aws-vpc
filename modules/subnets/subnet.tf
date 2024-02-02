@@ -7,7 +7,7 @@ resource "aws_subnet" "subnet" {
   ipv6_cidr_block   = length(var.ipv6_cidr_blocks) > 0 ? var.ipv6_cidr_blocks[count.index] : null
   tags = merge(local.tags,
     {
-      Name              = format("%s-%s-%s", var.name, var.subnet_type, element(local.az_short_id, count.index))
+      Name              = var.subnet_name_overrides != null ? var.subnet_name_overrides[count.index] : format("%s-%s-%s", var.name, var.subnet_type, element(local.az_short_id, count.index))
       network           = var.map_public_ip_on_launch == true ? "public" : "private"
       availability_zone = element(data.aws_availability_zones.az.names, count.index)
     }
