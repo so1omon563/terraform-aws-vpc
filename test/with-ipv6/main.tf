@@ -8,7 +8,7 @@ provider "aws" {
 }
 
 variable "name" {
-  default = "tf-basic-usage-vpc"
+  default = "tf-with-ipv6-vpc"
 }
 
 variable "tags" {
@@ -16,11 +16,15 @@ variable "tags" {
     example = "true"
   }
 }
-
+variable "vpc" {
+  default = {
+    assign_generated_ipv6_cidr_block = true
+  }
+}
 module "vpc" {
   source = "../../"
   name   = var.name
   tags   = var.tags
+  vpc    = var.vpc
 }
 output "vpc" { value = module.vpc }
-

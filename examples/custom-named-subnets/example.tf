@@ -1,14 +1,3 @@
-# Custom Named Subnets
-
-Example demonstrates setting fully custom names a variety of subnets.
-
-Example shows using Default Tags in the provider as well as passing additional tags into the resource.
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-
-
-## Examples
-
-```hcl
 locals {
   cidr_block     = "10.20.32.0/20"
   restrict_nacls = true
@@ -88,44 +77,3 @@ resource "aws_route" "ipv4_default" {
 
   destination_cidr_block = "0.0.0.0/0"
 }
-```
-
-## Requirements
-
-No requirements.
-
-## Providers
-
-| Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.34.0 |
-
-## Modules
-
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_custom-network"></a> [custom-network](#module\_custom-network) | ../..//modules/subnets | n/a |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | ../../ | n/a |
-
-## Resources
-
-| Name | Type |
-|------|------|
-| [aws_internet_gateway.igw](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway) | resource |
-| [aws_route.ipv4_default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route) | resource |
-
-## Inputs
-
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_tags"></a> [tags](#input\_tags) | n/a | `map` | <pre>{<br>  "example": "true"<br>}</pre> | no |
-
-## Outputs
-
-| Name | Description |
-|------|-------------|
-| <a name="output_custom-network"></a> [custom-network](#output\_custom-network) | n/a |
-| <a name="output_vpc"></a> [vpc](#output\_vpc) | n/a |
-
-
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
