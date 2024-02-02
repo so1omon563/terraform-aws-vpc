@@ -5,7 +5,6 @@ Example demonstrates creating a VPC with only 1 NAT Gateway, even though it has 
 Example shows using Default Tags in the provider as well as passing additional tags into the resource.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
-
 ## Examples
 
 ```hcl
@@ -20,7 +19,7 @@ provider "aws" {
 
 module "vpc" {
   source  = "so1omon563/vpc/aws"
-  version = "2.0.0"
+  version = "2.1.0"
 
   nat_gateway_count = 1
 
@@ -62,6 +61,5 @@ No inputs.
 | Name | Description |
 |------|-------------|
 | <a name="output_network"></a> [network](#output\_network) | n/a |
-
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

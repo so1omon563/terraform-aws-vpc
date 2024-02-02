@@ -5,7 +5,6 @@ Basic usage example using default values.
 Example shows using Default Tags in the provider as well as passing additional tags into the resource.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
-
 ## Examples
 
 ```hcl
@@ -20,7 +19,7 @@ provider "aws" {
 
 module "vpc" {
   source  = "so1omon563/vpc/aws"
-  version = "2.0.0"
+  version = "2.1.0"
 
   name = "example-vpc"
   tags = {
@@ -57,6 +56,5 @@ No inputs.
 | Name | Description |
 |------|-------------|
 | <a name="output_vpc"></a> [vpc](#output\_vpc) | n/a |
-
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

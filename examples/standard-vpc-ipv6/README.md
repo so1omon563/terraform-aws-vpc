@@ -5,7 +5,6 @@ Example demonstrates creating a VPC using default values with IPv6 support, and 
 Example shows using Default Tags in the provider as well as passing additional tags into the resource.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
-
 ## Examples
 
 ```hcl
@@ -20,7 +19,7 @@ provider "aws" {
 
 module "vpc" {
   source  = "so1omon563/vpc/aws"
-  version = "2.0.0"
+  version = "2.1.0"
 
   vpc = {
     assign_generated_ipv6_cidr_block = true
@@ -34,7 +33,7 @@ module "vpc" {
 
 module "endpoints" {
   source  = "so1omon563/vpc/aws//modules/gateway-endpoints/by-route-table"
-  version = "2.0.0"
+  version = "2.1.0"
 
   name = module.vpc.name_prefix
   tags = module.vpc.tags
@@ -76,6 +75,5 @@ No inputs.
 | Name | Description |
 |------|-------------|
 | <a name="output_network"></a> [network](#output\_network) | n/a |
-
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

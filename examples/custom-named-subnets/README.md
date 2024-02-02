@@ -5,7 +5,6 @@ Example demonstrates setting fully custom names a variety of subnets.
 Example shows using Default Tags in the provider as well as passing additional tags into the resource.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
-
 ## Examples
 
 ```hcl
@@ -30,7 +29,7 @@ variable "tags" {
 }
 module "vpc" {
   # source  = "so1omon563/vpc/aws"
-  # version = "2.0.0"
+  # version = "2.1.0"
   source = "../../"
 
   vpc = {
@@ -52,7 +51,7 @@ output "vpc" {
 
 module "custom-network" {
   # source  = "so1omon563/vpc/aws//modules/subnets"
-  # version = "2.0.0"
+  # version = "2.1.0"
   source = "../..//modules/subnets"
 
   vpc_id = module.vpc.vpc_id
@@ -126,6 +125,5 @@ No requirements.
 |------|-------------|
 | <a name="output_custom-network"></a> [custom-network](#output\_custom-network) | n/a |
 | <a name="output_vpc"></a> [vpc](#output\_vpc) | n/a |
-
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

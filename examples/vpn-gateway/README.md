@@ -5,7 +5,6 @@ Example demonstrates a VPN Gateway in a VPC.
 Example shows using Default Tags in the provider as well as passing additional tags into the resource.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
-
 ## Examples
 
 ```hcl
@@ -24,7 +23,7 @@ locals {
 
 module "vpc" {
   source  = "so1omon563/vpc/aws"
-  version = "2.0.0"
+  version = "2.1.0"
 
   vpc = {
     cidr_block = local.cidr_block
@@ -43,7 +42,7 @@ module "vpc" {
 module "vpn" {
 
   source  = "so1omon563/vpc/aws//modules/vpn-gateway/by-route-table"
-  version = "2.0.0"
+  version = "2.1.0"
 
   name = module.vpc.name_prefix
   tags = module.vpc.tags
@@ -89,6 +88,5 @@ No inputs.
 |------|-------------|
 | <a name="output_network"></a> [network](#output\_network) | n/a |
 | <a name="output_vpn"></a> [vpn](#output\_vpn) | n/a |
-
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
