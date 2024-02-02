@@ -14,7 +14,7 @@ provider "aws" {
 
 module "vpc" {
   source  = "so1omon563/vpc/aws"
-  version = "2.0.0"
+  version = "2.2.0"
 
   vpc = {
     cidr_block = local.cidr_block
@@ -39,7 +39,7 @@ output "vpc" {
 
 module "bastion-network" {
   source  = "so1omon563/vpc/aws//modules/subnets"
-  version = "2.0.0"
+  version = "2.2.0"
 
   vpc_id = module.vpc.vpc_id
 
@@ -71,7 +71,7 @@ resource "aws_route" "ipv4_default" {
 # This opens port 22 from anywhere, so be sure to use your security group to narrow the scope
 module "bastion-nacl" {
   source  = "so1omon563/vpc/aws//modules/subnet-nacl-rules/generic"
-  version = "2.0.0"
+  version = "2.2.0"
 
   nacl_id = module.bastion-network.nacl.id
 
@@ -82,7 +82,7 @@ module "bastion-nacl" {
 
 module "cache-network" {
   source  = "so1omon563/vpc/aws//modules/subnets"
-  version = "2.0.0"
+  version = "2.2.0"
 
   vpc_id = module.vpc.vpc_id
 
@@ -98,7 +98,7 @@ module "cache-network" {
 
 module "redis-nacl" {
   source  = "so1omon563/vpc/aws//modules/subnet-nacl-rules/service"
-  version = "2.0.0"
+  version = "2.2.0"
 
   nacl_id = module.cache-network.nacl.id
 
@@ -110,7 +110,7 @@ module "redis-nacl" {
 
 module "rds-network" {
   source  = "so1omon563/vpc/aws//modules/subnets"
-  version = "2.0.0"
+  version = "2.2.0"
 
   vpc_id = module.vpc.vpc_id
 
@@ -127,7 +127,7 @@ module "rds-network" {
 
 module "postgres-nacl" {
   source  = "so1omon563/vpc/aws//modules/subnet-nacl-rules/service"
-  version = "2.0.0"
+  version = "2.2.0"
 
   nacl_id = module.rds-network.nacl.id
 
@@ -138,14 +138,14 @@ module "postgres-nacl" {
 ## Create generic NACLs for private and public subnets
 module "private-nacl" {
   source  = "so1omon563/vpc/aws//modules/subnet-nacl-rules/generic"
-  version = "2.0.0"
+  version = "2.2.0"
 
   nacl_id = module.vpc.private_nacl.id
 }
 
 module "public-nacl" {
   source  = "so1omon563/vpc/aws//modules/subnet-nacl-rules/generic"
-  version = "2.0.0"
+  version = "2.2.0"
 
   nacl_id = module.vpc.public_nacl.id
 }
@@ -153,7 +153,7 @@ module "public-nacl" {
 ## Create S3 and DynamoDB endpoints
 module "endpoints" {
   source  = "so1omon563/vpc/aws//modules/gateway-endpoints//by-route-table"
-  version = "2.0.0"
+  version = "2.2.0"
 
   name = module.vpc.name_prefix
   tags = module.vpc.tags

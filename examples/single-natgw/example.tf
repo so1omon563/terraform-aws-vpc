@@ -9,7 +9,7 @@ provider "aws" {
 
 module "vpc" {
   source  = "so1omon563/vpc/aws"
-  version = "2.0.0"
+  version = "2.2.0"
 
   nat_gateway_count = 1
 
