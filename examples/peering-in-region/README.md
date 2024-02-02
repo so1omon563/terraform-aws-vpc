@@ -5,7 +5,6 @@ Example demonstrates creating a VPC Peering Connection in the same region within
 Example shows using Default Tags in the provider as well as passing additional tags into the resource.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
-
 ## Examples
 
 ```hcl
@@ -42,7 +41,7 @@ module "req" {
   }
 
   source  = "so1omon563/vpc/aws"
-  version = "2.0.0"
+  version = "2.1.0"
 
   name = "requester-vpc"
   tags = {
@@ -60,7 +59,7 @@ module "acp" {
   }
 
   source  = "so1omon563/vpc/aws"
-  version = "2.0.0"
+  version = "2.1.0"
 
   name = "accepter-vpc"
   tags = {
@@ -79,7 +78,7 @@ module "pcx" {
   }
 
   source  = "so1omon563/vpc/aws//modules/peering"
-  version = "2.0.0"
+  version = "2.1.0"
 
   name = "peering-in-region-example"
   tags = {
@@ -147,6 +146,5 @@ No inputs.
 | Name | Description |
 |------|-------------|
 | <a name="output_peering"></a> [peering](#output\_peering) | n/a |
-
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

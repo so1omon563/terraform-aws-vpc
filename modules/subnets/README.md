@@ -53,6 +53,7 @@ No modules.
 | <a name="input_ipv6_cidr_blocks"></a> [ipv6\_cidr\_blocks](#input\_ipv6\_cidr\_blocks) | List of IPv6 cidr blocks to configure subnets. If specified, length must match ipv4\_cidr\_blocks | `list(string)` | `[]` | no |
 | <a name="input_isolate_route_tables"></a> [isolate\_route\_tables](#input\_isolate\_route\_tables) | If `true`, a route table will be created for each subnet, otherwise a single route table will be created for all subnets managed by this module | `bool` | `false` | no |
 | <a name="input_map_public_ip_on_launch"></a> [map\_public\_ip\_on\_launch](#input\_map\_public\_ip\_on\_launch) | If true, automatically assign a public IPv4 address to resources in the subnets. | `bool` | `false` | no |
+| <a name="input_nacl_name_override"></a> [nacl\_name\_override](#input\_nacl\_name\_override) | Required if using `var.subnet_name_overrides` to set the name of the NACL. | `string` | `null` | no |
 | <a name="input_name"></a> [name](#input\_name) | Short, descriptive name of the environment. All resources will be named using this value as a prefix. Either this, or `var.subnet_name_overrides` must be populated. | `string` | `null` | no |
 | <a name="input_restrict_nacls"></a> [restrict\_nacls](#input\_restrict\_nacls) | If this is set to `true`, network ACL resource created for these subnets will be left empty and deny all ingress and egress traffic. This is useful if you want to manage NACLs outside of this module. If set to `false`, `allow all` ingress and egress NACL rules are created for the subnets | `bool` | `false` | no |
 | <a name="input_route_table_name_override"></a> [route\_table\_name\_override](#input\_route\_table\_name\_override) | Required if using `var.subnet_name_overrides` and not setting `var.isolate_route_tables` to `true`. | `string` | `null` | no |
@@ -67,6 +68,7 @@ No modules.
 |------|-------------|
 | <a name="output_nacl"></a> [nacl](#output\_nacl) | A collection of outputs from the NACL created by this module. |
 | <a name="output_route_table_ids"></a> [route\_table\_ids](#output\_route\_table\_ids) | A list of the route table ids created by this module. |
+| <a name="output_route_table_names"></a> [route\_table\_names](#output\_route\_table\_names) | A list of the route table names created by this module. |
 | <a name="output_subnets"></a> [subnets](#output\_subnets) | A collection of outputs from the created Subnets. |
 
 

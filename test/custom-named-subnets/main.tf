@@ -47,6 +47,7 @@ module "custom-network" {
     "custom-2"
   ]
   route_table_name_override = "custom-routes"
+  nacl_name_override        = "custom-nacl"
   tags                      = var.tags
 
   ipv4_cidr_blocks = cidrsubnets(cidrsubnet(local.cidr_block, 7, 8), 1, 1)
