@@ -15,6 +15,10 @@ output "route_table_ids" {
   value       = aws_route_table.route_table[*].id
 }
 
+output "route_table_names" {
+  description = "A list of the route table names created by this module."
+  value       = aws_route_table.route_table[*].tags.Name
+}
 output "nacl" {
   description = "A collection of outputs from the NACL created by this module."
   value       = length(aws_network_acl.nacl) > 0 ? { for key, value in aws_network_acl.nacl[0] : key => value if contains(local.output_filter, key) } : null

@@ -7,5 +7,5 @@ locals {
   all_ipv4        = "0.0.0.0/0"
   all_ipv6        = "::/0"
   max_rule_number = 32766 # Per AWS docs (https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html#nacl-basics)
-  name            = var.name != null ? var.name : "default-name"
+  name            = var.name != null ? var.name : "no-name"
 }

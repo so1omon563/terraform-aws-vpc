@@ -5,7 +5,6 @@ Example demonstrates a VPN Gateway in a VPC.
 Example shows using Default Tags in the provider as well as passing additional tags into the resource.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
-
 ## Examples
 
 ```hcl
@@ -89,6 +88,5 @@ No inputs.
 |------|-------------|
 | <a name="output_network"></a> [network](#output\_network) | n/a |
 | <a name="output_vpn"></a> [vpn](#output\_vpn) | n/a |
-
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

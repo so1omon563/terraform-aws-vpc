@@ -5,7 +5,6 @@ Example demonstrates creating a VPC using default values with IPv6 support, and 
 Example shows using Default Tags in the provider as well as passing additional tags into the resource.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
-
 ## Examples
 
 ```hcl
@@ -76,6 +75,5 @@ No inputs.
 | Name | Description |
 |------|-------------|
 | <a name="output_network"></a> [network](#output\_network) | n/a |
-
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

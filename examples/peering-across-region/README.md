@@ -5,7 +5,6 @@ Example demonstrates creating a VPC Peering Connection across regions within the
 Example shows using Default Tags in the provider as well as passing additional tags into the resource.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
-
 ## Examples
 
 ```hcl
@@ -148,6 +147,5 @@ No inputs.
 | Name | Description |
 |------|-------------|
 | <a name="output_peering"></a> [peering](#output\_peering) | n/a |
-
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
