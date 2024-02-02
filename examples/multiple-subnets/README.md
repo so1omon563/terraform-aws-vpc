@@ -25,7 +25,7 @@ provider "aws" {
 
 module "vpc" {
   source  = "so1omon563/vpc/aws"
-  version = "2.0.0"
+  version = "2.2.0"
 
   vpc = {
     cidr_block = local.cidr_block
@@ -50,7 +50,7 @@ output "vpc" {
 
 module "bastion-network" {
   source  = "so1omon563/vpc/aws//modules/subnets"
-  version = "2.0.0"
+  version = "2.2.0"
 
   vpc_id = module.vpc.vpc_id
 
@@ -82,7 +82,7 @@ resource "aws_route" "ipv4_default" {
 # This opens port 22 from anywhere, so be sure to use your security group to narrow the scope
 module "bastion-nacl" {
   source  = "so1omon563/vpc/aws//modules/subnet-nacl-rules/generic"
-  version = "2.0.0"
+  version = "2.2.0"
 
   nacl_id = module.bastion-network.nacl.id
 
@@ -93,7 +93,7 @@ module "bastion-nacl" {
 
 module "cache-network" {
   source  = "so1omon563/vpc/aws//modules/subnets"
-  version = "2.0.0"
+  version = "2.2.0"
 
   vpc_id = module.vpc.vpc_id
 
@@ -109,7 +109,7 @@ module "cache-network" {
 
 module "redis-nacl" {
   source  = "so1omon563/vpc/aws//modules/subnet-nacl-rules/service"
-  version = "2.0.0"
+  version = "2.2.0"
 
   nacl_id = module.cache-network.nacl.id
 
@@ -121,7 +121,7 @@ module "redis-nacl" {
 
 module "rds-network" {
   source  = "so1omon563/vpc/aws//modules/subnets"
-  version = "2.0.0"
+  version = "2.2.0"
 
   vpc_id = module.vpc.vpc_id
 
@@ -138,7 +138,7 @@ module "rds-network" {
 
 module "postgres-nacl" {
   source  = "so1omon563/vpc/aws//modules/subnet-nacl-rules/service"
-  version = "2.0.0"
+  version = "2.2.0"
 
   nacl_id = module.rds-network.nacl.id
 
@@ -149,14 +149,14 @@ module "postgres-nacl" {
 ## Create generic NACLs for private and public subnets
 module "private-nacl" {
   source  = "so1omon563/vpc/aws//modules/subnet-nacl-rules/generic"
-  version = "2.0.0"
+  version = "2.2.0"
 
   nacl_id = module.vpc.private_nacl.id
 }
 
 module "public-nacl" {
   source  = "so1omon563/vpc/aws//modules/subnet-nacl-rules/generic"
-  version = "2.0.0"
+  version = "2.2.0"
 
   nacl_id = module.vpc.public_nacl.id
 }
@@ -164,7 +164,7 @@ module "public-nacl" {
 ## Create S3 and DynamoDB endpoints
 module "endpoints" {
   source  = "so1omon563/vpc/aws//modules/gateway-endpoints//by-route-table"
-  version = "2.0.0"
+  version = "2.2.0"
 
   name = module.vpc.name_prefix
   tags = module.vpc.tags
@@ -186,22 +186,22 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.34.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_bastion-nacl"></a> [bastion-nacl](#module\_bastion-nacl) | so1omon563/vpc/aws//modules/subnet-nacl-rules/generic | 2.0.0 |
-| <a name="module_bastion-network"></a> [bastion-network](#module\_bastion-network) | so1omon563/vpc/aws//modules/subnets | 2.0.0 |
-| <a name="module_cache-network"></a> [cache-network](#module\_cache-network) | so1omon563/vpc/aws//modules/subnets | 2.0.0 |
-| <a name="module_endpoints"></a> [endpoints](#module\_endpoints) | so1omon563/vpc/aws//modules/gateway-endpoints//by-route-table | 2.0.0 |
-| <a name="module_postgres-nacl"></a> [postgres-nacl](#module\_postgres-nacl) | so1omon563/vpc/aws//modules/subnet-nacl-rules/service | 2.0.0 |
-| <a name="module_private-nacl"></a> [private-nacl](#module\_private-nacl) | so1omon563/vpc/aws//modules/subnet-nacl-rules/generic | 2.0.0 |
-| <a name="module_public-nacl"></a> [public-nacl](#module\_public-nacl) | so1omon563/vpc/aws//modules/subnet-nacl-rules/generic | 2.0.0 |
-| <a name="module_rds-network"></a> [rds-network](#module\_rds-network) | so1omon563/vpc/aws//modules/subnets | 2.0.0 |
-| <a name="module_redis-nacl"></a> [redis-nacl](#module\_redis-nacl) | so1omon563/vpc/aws//modules/subnet-nacl-rules/service | 2.0.0 |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | so1omon563/vpc/aws | 2.0.0 |
+| <a name="module_bastion-nacl"></a> [bastion-nacl](#module\_bastion-nacl) | so1omon563/vpc/aws//modules/subnet-nacl-rules/generic | 2.2.0 |
+| <a name="module_bastion-network"></a> [bastion-network](#module\_bastion-network) | so1omon563/vpc/aws//modules/subnets | 2.2.0 |
+| <a name="module_cache-network"></a> [cache-network](#module\_cache-network) | so1omon563/vpc/aws//modules/subnets | 2.2.0 |
+| <a name="module_endpoints"></a> [endpoints](#module\_endpoints) | so1omon563/vpc/aws//modules/gateway-endpoints//by-route-table | 2.2.0 |
+| <a name="module_postgres-nacl"></a> [postgres-nacl](#module\_postgres-nacl) | so1omon563/vpc/aws//modules/subnet-nacl-rules/service | 2.2.0 |
+| <a name="module_private-nacl"></a> [private-nacl](#module\_private-nacl) | so1omon563/vpc/aws//modules/subnet-nacl-rules/generic | 2.2.0 |
+| <a name="module_public-nacl"></a> [public-nacl](#module\_public-nacl) | so1omon563/vpc/aws//modules/subnet-nacl-rules/generic | 2.2.0 |
+| <a name="module_rds-network"></a> [rds-network](#module\_rds-network) | so1omon563/vpc/aws//modules/subnets | 2.2.0 |
+| <a name="module_redis-nacl"></a> [redis-nacl](#module\_redis-nacl) | so1omon563/vpc/aws//modules/subnet-nacl-rules/service | 2.2.0 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | so1omon563/vpc/aws | 2.2.0 |
 
 ## Resources
 

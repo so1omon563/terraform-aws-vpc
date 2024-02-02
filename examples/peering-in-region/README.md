@@ -42,7 +42,7 @@ module "req" {
   }
 
   source  = "so1omon563/vpc/aws"
-  version = "2.0.0"
+  version = "2.2.0"
 
   name = "requester-vpc"
   tags = {
@@ -60,7 +60,7 @@ module "acp" {
   }
 
   source  = "so1omon563/vpc/aws"
-  version = "2.0.0"
+  version = "2.2.0"
 
   name = "accepter-vpc"
   tags = {
@@ -79,7 +79,7 @@ module "pcx" {
   }
 
   source  = "so1omon563/vpc/aws//modules/peering"
-  version = "2.0.0"
+  version = "2.2.0"
 
   name = "peering-in-region-example"
   tags = {
@@ -120,16 +120,16 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws.accepter"></a> [aws.accepter](#provider\_aws.accepter) | n/a |
-| <a name="provider_aws.requester"></a> [aws.requester](#provider\_aws.requester) | n/a |
+| <a name="provider_aws.accepter"></a> [aws.accepter](#provider\_aws.accepter) | 5.34.0 |
+| <a name="provider_aws.requester"></a> [aws.requester](#provider\_aws.requester) | 5.34.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_acp"></a> [acp](#module\_acp) | so1omon563/vpc/aws | 2.0.0 |
-| <a name="module_pcx"></a> [pcx](#module\_pcx) | so1omon563/vpc/aws//modules/peering | 2.0.0 |
-| <a name="module_req"></a> [req](#module\_req) | so1omon563/vpc/aws | 2.0.0 |
+| <a name="module_acp"></a> [acp](#module\_acp) | so1omon563/vpc/aws | 2.2.0 |
+| <a name="module_pcx"></a> [pcx](#module\_pcx) | so1omon563/vpc/aws//modules/peering | 2.2.0 |
+| <a name="module_req"></a> [req](#module\_req) | so1omon563/vpc/aws | 2.2.0 |
 
 ## Resources
 

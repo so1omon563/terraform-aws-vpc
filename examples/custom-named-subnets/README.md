@@ -9,11 +9,6 @@ Example shows using Default Tags in the provider as well as passing additional t
 ## Examples
 
 ```hcl
-locals {
-  cidr_block     = "10.20.32.0/20"
-  restrict_nacls = true
-}
-
 provider "aws" {
   default_tags {
     tags = {
@@ -23,18 +18,21 @@ provider "aws" {
   }
 }
 
+variable "cidr_block" {
+  default = "10.20.32.0/20"
+}
+
 variable "tags" {
   default = {
     example = "true"
   }
 }
 module "vpc" {
-  # source  = "so1omon563/vpc/aws"
-  # version = "2.0.0"
-  source = "../../"
+  source  = "so1omon563/vpc/aws"
+  version = "2.2.0"
 
   vpc = {
-    cidr_block = local.cidr_block
+    cidr_block = var.cidr_block
   }
   public_cidrs  = []
   private_cidrs = []
@@ -51,9 +49,8 @@ output "vpc" {
 ## Create custom named public subnets.
 
 module "custom-network" {
-  # source  = "so1omon563/vpc/aws//modules/subnets"
-  # version = "2.0.0"
-  source = "../..//modules/subnets"
+  source  = "so1omon563/vpc/aws//modules/subnets"
+  version = "2.2.0"
 
   vpc_id = module.vpc.vpc_id
 
@@ -64,7 +61,7 @@ module "custom-network" {
   route_table_name_override = "custom-routes"
   tags                      = var.tags
 
-  ipv4_cidr_blocks = cidrsubnets(cidrsubnet(local.cidr_block, 7, 8), 1, 1)
+  ipv4_cidr_blocks = cidrsubnets(cidrsubnet(var.cidr_block, 7, 8), 1, 1)
 
   map_public_ip_on_launch = true
 }
@@ -98,14 +95,14 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.34.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.35.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_custom-network"></a> [custom-network](#module\_custom-network) | ../..//modules/subnets | n/a |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | ../../ | n/a |
+| <a name="module_custom-network"></a> [custom-network](#module\_custom-network) | so1omon563/vpc/aws//modules/subnets | 2.2.0 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | so1omon563/vpc/aws | 2.2.0 |
 
 ## Resources
 
@@ -118,6 +115,7 @@ No requirements.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_cidr_block"></a> [cidr\_block](#input\_cidr\_block) | n/a | `string` | `"10.20.32.0/20"` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | n/a | `map` | <pre>{<br>  "example": "true"<br>}</pre> | no |
 
 ## Outputs

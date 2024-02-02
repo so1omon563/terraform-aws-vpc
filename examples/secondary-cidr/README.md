@@ -20,7 +20,7 @@ provider "aws" {
 
 module "vpc" {
   source  = "so1omon563/vpc/aws"
-  version = "2.0.0"
+  version = "2.2.0"
 
   name = "example-secondary-cidr-vpc"
   tags = {
@@ -31,7 +31,7 @@ module "vpc" {
 # Create the additional CIDR block
 module "secondary_cidr" {
   source  = "so1omon563/vpc/aws//modules/additional-cidr-block-association"
-  version = "2.0.0"
+  version = "2.2.0"
 
   vpc_id     = module.vpc.vpc_id
   cidr_block = "10.0.0.0/16"
@@ -40,7 +40,7 @@ module "secondary_cidr" {
 # Create subnets for Lambda in the new CIDR block
 module "lambda_subnets" {
   source  = "so1omon563/vpc/aws//modules/subnets"
-  version = "2.0.0"
+  version = "2.2.0"
 
   vpc_id      = module.vpc.vpc_id
   name        = module.vpc.name_prefix
@@ -75,9 +75,9 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_lambda_subnets"></a> [lambda\_subnets](#module\_lambda\_subnets) | so1omon563/vpc/aws//modules/subnets | 2.0.0 |
-| <a name="module_secondary_cidr"></a> [secondary\_cidr](#module\_secondary\_cidr) | so1omon563/vpc/aws//modules/additional-cidr-block-association | 2.0.0 |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | so1omon563/vpc/aws | 2.0.0 |
+| <a name="module_lambda_subnets"></a> [lambda\_subnets](#module\_lambda\_subnets) | so1omon563/vpc/aws//modules/subnets | 2.2.0 |
+| <a name="module_secondary_cidr"></a> [secondary\_cidr](#module\_secondary\_cidr) | so1omon563/vpc/aws//modules/additional-cidr-block-association | 2.2.0 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | so1omon563/vpc/aws | 2.2.0 |
 
 ## Resources
 

@@ -24,7 +24,7 @@ locals {
 
 module "vpc" {
   source  = "so1omon563/vpc/aws"
-  version = "2.0.0"
+  version = "2.2.0"
 
   vpc = {
     cidr_block = local.cidr_block
@@ -43,7 +43,7 @@ module "vpc" {
 module "vpn" {
 
   source  = "so1omon563/vpc/aws//modules/vpn-gateway/by-route-table"
-  version = "2.0.0"
+  version = "2.2.0"
 
   name = module.vpc.name_prefix
   tags = module.vpc.tags
@@ -72,8 +72,8 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | so1omon563/vpc/aws | 2.0.0 |
-| <a name="module_vpn"></a> [vpn](#module\_vpn) | so1omon563/vpc/aws//modules/vpn-gateway/by-route-table | 2.0.0 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | so1omon563/vpc/aws | 2.2.0 |
+| <a name="module_vpn"></a> [vpn](#module\_vpn) | so1omon563/vpc/aws//modules/vpn-gateway/by-route-table | 2.2.0 |
 
 ## Resources
 
