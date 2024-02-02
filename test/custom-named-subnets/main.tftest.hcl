@@ -4,7 +4,7 @@
 run "verify_vpc_outputs_plan" {
   command = plan
   assert {
-    condition     = module.vpc.tags.Name == var.name
+    condition     = module.vpc.tags.Name == "example-custom-subnets-vpc"
     error_message = "Name Tag did not match expected result."
   }
   assert {
@@ -12,7 +12,7 @@ run "verify_vpc_outputs_plan" {
     error_message = "One or more tags did not match expected result."
   }
   assert {
-    condition     = module.vpc.vpc.cidr_block == "10.255.255.192/26"
+    condition     = module.vpc.vpc.cidr_block == "10.20.32.0/20"
     error_message = "CIDR Block did not match expected result."
   }
   assert {
@@ -24,31 +24,39 @@ run "verify_vpc_outputs_plan" {
     error_message = "Egress-only Internet Gateway configuration does not match expected result."
   }
   assert {
-    condition     = length(module.vpc.nat_gateways) == 2
+    condition     = length(module.vpc.nat_gateways) == 0
     error_message = "Number of NAT Gateways does not match expected result."
   }
   assert {
-    condition     = length(module.vpc.private_nacl) == 3
+    condition     = module.vpc.private_nacl == null
     error_message = "Private NACL configuration does not match expected result."
   }
   assert {
-    condition     = length(module.vpc.private_route_table_ids) == 2
+    condition     = length(module.vpc.private_route_table_ids) == 0
     error_message = "Number of Private Route Table IDs does not match expected result."
   }
   assert {
-    condition     = length(module.vpc.private_subnets) == 2
+    condition     = length(module.vpc.private_subnets) == 0
     error_message = "Number of Private Subnets does not match expected result."
   }
   assert {
-    condition     = length(module.vpc.public_nacl) == 3
+    condition     = module.vpc.public_nacl == null
     error_message = "Public NACL configuration does not match expected result."
   }
   assert {
-    condition     = length(module.vpc.public_route_table_ids) == 1
+    condition     = length(module.vpc.public_route_table_ids) == 0
     error_message = "Number of Public Route Table IDs does not match expected result."
   }
   assert {
-    condition     = length(module.vpc.public_subnets) == 2
+    condition     = length(module.vpc.public_subnets) == 0
     error_message = "Number of Public Subnets does not match expected result."
+  }
+  assert {
+    condition     = length(module.custom-network.route_table_ids) == 1
+    error_message = "Number of Route Tables does not match expected result."
+  }
+  assert {
+    condition     = length(module.custom-network.subnets) == 2
+    error_message = "Number of subnets does not match expected result."
   }
 }

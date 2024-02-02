@@ -1,7 +1,7 @@
 locals {
   // list of attributes to expose as output variable properties
   output_filter = [
-    "id", "arn", "availability_zone", "assign_ipv6_address_on_creation", "map_public_ip_on_launch", "subnet_ids"
+    "id", "arn", "availability_zone", "assign_ipv6_address_on_creation", "map_public_ip_on_launch", "subnet_ids", "tags"
   ]
 }
 

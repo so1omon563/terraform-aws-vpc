@@ -16,15 +16,19 @@ run "verify_vpc_outputs_plan" {
     error_message = "CIDR Block did not match expected result."
   }
   assert {
-    condition     = module.vpc.vpc.assign_generated_ipv6_cidr_block == true
+    condition     = module.vpc.vpc.assign_generated_ipv6_cidr_block == false
     error_message = "ipv6 association does not match expected result."
+  }
+  assert {
+    condition     = module.vpc.vpc.eigw_id == null
+    error_message = "Egress-only Internet Gateway configuration does not match expected result."
   }
   assert {
     condition     = length(module.vpc.nat_gateways) == 2
     error_message = "Number of NAT Gateways does not match expected result."
   }
   assert {
-    condition     = length(module.vpc.private_nacl) == 3
+    condition     = length(module.vpc.private_nacl) == 4
     error_message = "Private NACL configuration does not match expected result."
   }
   assert {
@@ -36,7 +40,7 @@ run "verify_vpc_outputs_plan" {
     error_message = "Number of Private Subnets does not match expected result."
   }
   assert {
-    condition     = length(module.vpc.public_nacl) == 3
+    condition     = length(module.vpc.public_nacl) == 4
     error_message = "Public NACL configuration does not match expected result."
   }
   assert {

@@ -23,7 +23,8 @@ variable "map_public_ip_on_launch" {
 
 variable "name" {
   type        = string
-  description = "Short, descriptive name of the environment. All resources will be named using this value as a prefix."
+  description = "Short, descriptive name of the environment. All resources will be named using this value as a prefix. Either this, or `var.subnet_name_overrides` must be populated."
+  default     = null
 }
 
 variable "vpc_id" {
@@ -35,6 +36,17 @@ variable "restrict_nacls" {
   type        = bool
   description = "If this is set to `true`, network ACL resource created for these subnets will be left empty and deny all ingress and egress traffic. This is useful if you want to manage NACLs outside of this module. If set to `false`, `allow all` ingress and egress NACL rules are created for the subnets"
   default     = false
+}
+
+variable "route_table_name_override" {
+  description = "Required if using `var.subnet_name_overrides` and not setting `var.isolate_route_tables` to `true`."
+  type        = string
+  default     = null
+}
+variable "subnet_name_overrides" {
+  description = "Used if there is a need to specify subnet names outside of the standardized nomenclature defined in the module. For example, if importing subnets that doesn't follow the standard naming formats. The order of names here must coincide with the cidr blocks in `var.ipv4_cidr_blocks`. If not setting `var.isolate_route_tables` to `true` (most use cases), you must also include a value for `var.route_table_name_override`."
+  type        = list(string)
+  default     = null
 }
 
 variable "subnet_type" {
