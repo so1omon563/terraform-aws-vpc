@@ -79,4 +79,25 @@ run "verify_vpc_outputs_plan" {
     condition     = module.custom-network.route_table_names[0] == "custom-routes"
     error_message = "Route table name does not match expected result."
   }
+
+  assert {
+    condition     = length(module.custom-network-private.route_table_ids) == 2
+    error_message = "Number of Route Table IDs does not match expected result."
+  }
+  assert {
+    condition     = length(module.custom-network-private.subnets) == 2
+    error_message = "Number of subnets does not match expected result."
+  }
+  assert {
+    condition     = module.custom-network-private.subnets[0].tags.Name == "custom-private-1"
+    error_message = "Subnet name does not match expected result."
+  }
+  assert {
+    condition     = module.custom-network-private.subnets[1].tags.Name == "custom-private-2"
+    error_message = "Subnet name does not match expected result."
+  }
+  assert {
+    condition     = length(module.custom-network-private.route_table_names) == 2
+    error_message = "Number of Route Table Names does not match expected result."
+  }
 }
