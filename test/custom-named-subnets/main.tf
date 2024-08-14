@@ -74,3 +74,20 @@ resource "aws_route" "ipv4_default" {
 
   destination_cidr_block = "0.0.0.0/0"
 }
+
+module "custom-network-private" {
+  source = "../..//modules/subnets"
+
+  vpc_id = module.vpc.vpc_id
+
+  subnet_name_overrides = [
+    "custom-private-1",
+    "custom-private-2"
+  ]
+  isolate_route_tables = true
+  tags                 = var.tags
+
+  ipv4_cidr_blocks = cidrsubnets(cidrsubnet(local.cidr_block, 6, 6), 2, 2)
+
+  map_public_ip_on_launch = false
+}
