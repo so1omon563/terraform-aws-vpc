@@ -6,19 +6,19 @@ resource "aws_network_acl_rule" "ipv4-tcp-egress" {
   rule_number    = 29000 + count.index
   rule_action    = "allow"
   protocol       = 6
-  cidr_block = local.all_ipv4
-  from_port  = local.egress_tcp_whitelist[count.index]
-  to_port    = local.egress_tcp_whitelist[count.index]
+  cidr_block     = local.all_ipv4
+  from_port      = local.egress_tcp_whitelist[count.index]
+  to_port        = local.egress_tcp_whitelist[count.index]
 }
 
 resource "aws_network_acl_rule" "ipv6-tcp-egress" {
 
-  count          = var.enable_ipv6 ? length(local.egress_tcp_whitelist) : 0
-  network_acl_id = aws_network_acl_rule.ipv4-tcp-egress[count.index].network_acl_id
-  egress         = aws_network_acl_rule.ipv4-tcp-egress[count.index].egress
-  rule_number    = aws_network_acl_rule.ipv4-tcp-egress[count.index].rule_number + 500
-  rule_action    = aws_network_acl_rule.ipv4-tcp-egress[count.index].rule_action
-  protocol       = aws_network_acl_rule.ipv4-tcp-egress[count.index].protocol
+  count           = var.enable_ipv6 ? length(local.egress_tcp_whitelist) : 0
+  network_acl_id  = aws_network_acl_rule.ipv4-tcp-egress[count.index].network_acl_id
+  egress          = aws_network_acl_rule.ipv4-tcp-egress[count.index].egress
+  rule_number     = aws_network_acl_rule.ipv4-tcp-egress[count.index].rule_number + 500
+  rule_action     = aws_network_acl_rule.ipv4-tcp-egress[count.index].rule_action
+  protocol        = aws_network_acl_rule.ipv4-tcp-egress[count.index].protocol
   ipv6_cidr_block = local.all_ipv6
   from_port       = aws_network_acl_rule.ipv4-tcp-egress[count.index].from_port
   to_port         = aws_network_acl_rule.ipv4-tcp-egress[count.index].to_port
@@ -31,18 +31,18 @@ resource "aws_network_acl_rule" "ipv4-udp-egress" {
   rule_number    = 30000 + count.index
   rule_action    = "allow"
   protocol       = 17
-  cidr_block = local.all_ipv4
-  from_port  = local.egress_udp_whitelist[count.index]
-  to_port    = local.egress_udp_whitelist[count.index]
+  cidr_block     = local.all_ipv4
+  from_port      = local.egress_udp_whitelist[count.index]
+  to_port        = local.egress_udp_whitelist[count.index]
 }
 
 resource "aws_network_acl_rule" "ipv6-udp-egress" {
-  count          = var.enable_ipv6 ? length(local.egress_udp_whitelist) : 0
-  network_acl_id = aws_network_acl_rule.ipv4-udp-egress[count.index].network_acl_id
-  egress         = aws_network_acl_rule.ipv4-udp-egress[count.index].egress
-  rule_number    = aws_network_acl_rule.ipv4-udp-egress[count.index].rule_number + 500
-  rule_action    = aws_network_acl_rule.ipv4-udp-egress[count.index].rule_action
-  protocol       = aws_network_acl_rule.ipv4-udp-egress[count.index].protocol
+  count           = var.enable_ipv6 ? length(local.egress_udp_whitelist) : 0
+  network_acl_id  = aws_network_acl_rule.ipv4-udp-egress[count.index].network_acl_id
+  egress          = aws_network_acl_rule.ipv4-udp-egress[count.index].egress
+  rule_number     = aws_network_acl_rule.ipv4-udp-egress[count.index].rule_number + 500
+  rule_action     = aws_network_acl_rule.ipv4-udp-egress[count.index].rule_action
+  protocol        = aws_network_acl_rule.ipv4-udp-egress[count.index].protocol
   ipv6_cidr_block = local.all_ipv6
   from_port       = aws_network_acl_rule.ipv4-udp-egress[count.index].from_port
   to_port         = aws_network_acl_rule.ipv4-udp-egress[count.index].to_port
@@ -108,18 +108,18 @@ resource "aws_network_acl_rule" "ipv4-tcp-ingress-ephemeral" {
   rule_number    = aws_network_acl_rule.ipv4-tcp-egress[count.index].rule_number + 250
   rule_action    = aws_network_acl_rule.ipv4-tcp-egress[count.index].rule_action
   protocol       = aws_network_acl_rule.ipv4-tcp-egress[count.index].protocol
-  cidr_block = aws_network_acl_rule.ipv4-tcp-egress[count.index].cidr_block
-  from_port  = 1024
-  to_port    = 65535
+  cidr_block     = aws_network_acl_rule.ipv4-tcp-egress[count.index].cidr_block
+  from_port      = 1024
+  to_port        = 65535
 }
 
 resource "aws_network_acl_rule" "ipv6-tcp-ingress-ephemeral" {
-  count          = length(aws_network_acl_rule.ipv6-tcp-egress) > 0 ? 1 : 0
-  network_acl_id = aws_network_acl_rule.ipv6-tcp-egress[count.index].network_acl_id
-  egress         = false
-  rule_number    = aws_network_acl_rule.ipv6-tcp-egress[count.index].rule_number + 250
-  rule_action    = aws_network_acl_rule.ipv6-tcp-egress[count.index].rule_action
-  protocol       = aws_network_acl_rule.ipv6-tcp-egress[count.index].protocol
+  count           = length(aws_network_acl_rule.ipv6-tcp-egress) > 0 ? 1 : 0
+  network_acl_id  = aws_network_acl_rule.ipv6-tcp-egress[count.index].network_acl_id
+  egress          = false
+  rule_number     = aws_network_acl_rule.ipv6-tcp-egress[count.index].rule_number + 250
+  rule_action     = aws_network_acl_rule.ipv6-tcp-egress[count.index].rule_action
+  protocol        = aws_network_acl_rule.ipv6-tcp-egress[count.index].protocol
   ipv6_cidr_block = aws_network_acl_rule.ipv6-udp-egress[count.index].ipv6_cidr_block
   from_port       = 1024
   to_port         = 65535
@@ -132,18 +132,18 @@ resource "aws_network_acl_rule" "ipv4-udp-ingress-ephemeral" {
   rule_number    = aws_network_acl_rule.ipv4-udp-egress[count.index].rule_number + 250
   rule_action    = aws_network_acl_rule.ipv4-udp-egress[count.index].rule_action
   protocol       = aws_network_acl_rule.ipv4-udp-egress[count.index].protocol
-  cidr_block = aws_network_acl_rule.ipv4-udp-egress[count.index].cidr_block
-  from_port  = 1024
-  to_port    = 65535
+  cidr_block     = aws_network_acl_rule.ipv4-udp-egress[count.index].cidr_block
+  from_port      = 1024
+  to_port        = 65535
 }
 
 resource "aws_network_acl_rule" "ipv6-udp-ingress-ephemeral" {
-  count          = length(aws_network_acl_rule.ipv6-udp-egress) > 0 ? 1 : 0
-  network_acl_id = aws_network_acl_rule.ipv6-udp-egress[count.index].network_acl_id
-  egress         = false
-  rule_number    = aws_network_acl_rule.ipv6-udp-egress[count.index].rule_number + 250
-  rule_action    = aws_network_acl_rule.ipv6-udp-egress[count.index].rule_action
-  protocol       = aws_network_acl_rule.ipv6-udp-egress[count.index].protocol
+  count           = length(aws_network_acl_rule.ipv6-udp-egress) > 0 ? 1 : 0
+  network_acl_id  = aws_network_acl_rule.ipv6-udp-egress[count.index].network_acl_id
+  egress          = false
+  rule_number     = aws_network_acl_rule.ipv6-udp-egress[count.index].rule_number + 250
+  rule_action     = aws_network_acl_rule.ipv6-udp-egress[count.index].rule_action
+  protocol        = aws_network_acl_rule.ipv6-udp-egress[count.index].protocol
   ipv6_cidr_block = aws_network_acl_rule.ipv6-udp-egress[count.index].ipv6_cidr_block
   from_port       = 1024
   to_port         = 65535

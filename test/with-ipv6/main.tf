@@ -1,4 +1,7 @@
 provider "aws" {
+  skip_credentials_validation = true
+  skip_requesting_account_id  = true
+
   default_tags {
     tags = {
       environment = "dev"
@@ -22,9 +25,10 @@ variable "vpc" {
   }
 }
 module "vpc" {
-  source = "../../"
-  name   = var.name
-  tags   = var.tags
-  vpc    = var.vpc
+  source           = "../../"
+  create_flow_logs = false
+  name             = var.name
+  tags             = var.tags
+  vpc              = var.vpc
 }
 output "vpc" { value = module.vpc }

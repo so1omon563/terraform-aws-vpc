@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 # Get the root directory of the repo
 test_root=$(git rev-parse --show-toplevel)/test
 # Get the directories to test
