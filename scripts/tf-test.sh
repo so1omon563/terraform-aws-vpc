@@ -8,5 +8,6 @@ test_dirs=$(ls "${test_root}")
 
 # echo "${test_root}"
 for i in ${test_dirs}; do
-    terraform -chdir="${test_root}/$i" init && terraform -chdir="${test_root}/$i" test
+    terraform -chdir="${test_root}/$i" init
+    terraform -chdir="${test_root}/$i" test
 done
