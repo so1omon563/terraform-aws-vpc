@@ -4,6 +4,9 @@ locals {
 }
 
 provider "aws" {
+  skip_credentials_validation = true
+  skip_requesting_account_id  = true
+
   default_tags {
     tags = {
       environment = "dev"
@@ -20,6 +23,7 @@ variable "tags" {
 module "vpc" {
   source = "../../"
 
+  create_flow_logs = false
   vpc = {
     cidr_block = local.cidr_block
   }

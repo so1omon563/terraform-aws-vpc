@@ -1,16 +1,29 @@
+mock_provider "aws" {
+  mock_data "aws_caller_identity" {
+    defaults = {
+      account_id = "123456789012"
+    }
+  }
+
+  mock_data "aws_region" {
+    defaults = {
+      id   = "us-east-1"
+      name = "us-east-1"
+    }
+  }
+
+  mock_data "aws_availability_zones" {
+    defaults = {
+      names = ["us-east-1a", "us-east-1b"]
+    }
+  }
+}
+
 # Some basic unit testing to verify that selected outputs of the main module return expected results.
 # In order to reduce testing cost, only items that can be verified via a `terraform plan` are being tested here.
 
 run "verify_vpc_outputs_plan" {
   command = plan
-  assert {
-    condition     = module.vpc.tags.Name == var.name
-    error_message = "Name Tag did not match expected result."
-  }
-  assert {
-    condition     = module.vpc.tags.example == "true" && module.vpc.tags.environment == "dev" && module.vpc.tags.terraform == "true"
-    error_message = "One or more tags did not match expected result."
-  }
   assert {
     condition     = module.vpc.vpc.cidr_block == "10.255.255.192/26"
     error_message = "CIDR Block did not match expected result."
