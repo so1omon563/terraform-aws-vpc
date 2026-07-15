@@ -5,9 +5,21 @@ Example demonstrates some common "slightly more secure" use cases for adding a v
 Example shows using Default Tags in the provider as well as passing additional tags into the resource.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
+
 ## Examples
 
 ```hcl
+terraform {
+  required_version = ">= 1.5"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 4.0, < 6.0"
+    }
+  }
+}
+
 locals {
   cidr_block     = "10.20.32.0/20"
   restrict_nacls = true
@@ -49,7 +61,6 @@ output "vpc" {
 
 module "bastion-network" {
   source  = "so1omon563/vpc/aws//modules/subnets"
-
   version = "2.2.0"
 
   vpc_id = module.vpc.vpc_id
@@ -180,13 +191,16 @@ output "endpoints" {
 
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0, < 6.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.34.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.0, < 6.0 |
 
 ## Modules
 
@@ -220,5 +234,6 @@ No inputs.
 | <a name="output_bastion-network"></a> [bastion-network](#output\_bastion-network) | n/a |
 | <a name="output_endpoints"></a> [endpoints](#output\_endpoints) | n/a |
 | <a name="output_vpc"></a> [vpc](#output\_vpc) | n/a |
+
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

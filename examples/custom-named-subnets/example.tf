@@ -1,3 +1,14 @@
+terraform {
+  required_version = ">= 1.5"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 4.0, < 6.0"
+    }
+  }
+}
+
 provider "aws" {
   default_tags {
     tags = {
@@ -8,10 +19,12 @@ provider "aws" {
 }
 
 variable "cidr_block" {
+  type    = string
   default = "10.20.32.0/20"
 }
 
 variable "tags" {
+  type = map(string)
   default = {
     example = "true"
   }

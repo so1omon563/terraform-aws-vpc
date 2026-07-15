@@ -5,9 +5,21 @@ Example demonstrates a VPN Gateway in a VPC.
 Example shows using Default Tags in the provider as well as passing additional tags into the resource.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
+
 ## Examples
 
 ```hcl
+terraform {
+  required_version = ">= 1.5"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 4.0, < 6.0"
+    }
+  }
+}
+
 provider "aws" {
   default_tags {
     tags = {
@@ -61,7 +73,10 @@ output "vpn" {
 
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0, < 6.0 |
 
 ## Providers
 
@@ -88,5 +103,6 @@ No inputs.
 |------|-------------|
 | <a name="output_network"></a> [network](#output\_network) | n/a |
 | <a name="output_vpn"></a> [vpn](#output\_vpn) | n/a |
+
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
