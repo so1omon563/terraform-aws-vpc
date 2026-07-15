@@ -1,3 +1,14 @@
+terraform {
+  required_version = ">= 1.5"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 4.0, < 6.0"
+    }
+  }
+}
+
 locals {
   cidr_block     = "10.20.32.0/20"
   restrict_nacls = true
@@ -16,6 +27,7 @@ provider "aws" {
 }
 
 variable "tags" {
+  type = map(string)
   default = {
     example = "true"
   }

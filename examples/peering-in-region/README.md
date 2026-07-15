@@ -5,9 +5,21 @@ Example demonstrates creating a VPC Peering Connection in the same region within
 Example shows using Default Tags in the provider as well as passing additional tags into the resource.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
+
 ## Examples
 
 ```hcl
+terraform {
+  required_version = ">= 1.5"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 4.0, < 6.0"
+    }
+  }
+}
+
 provider "aws" {
   alias = "requester"
 
@@ -113,14 +125,17 @@ output "peering" { value = module.pcx }
 
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0, < 6.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws.accepter"></a> [aws.accepter](#provider\_aws.accepter) | 5.34.0 |
-| <a name="provider_aws.requester"></a> [aws.requester](#provider\_aws.requester) | 5.34.0 |
+| <a name="provider_aws.accepter"></a> [aws.accepter](#provider\_aws.accepter) | >= 4.0, < 6.0 |
+| <a name="provider_aws.requester"></a> [aws.requester](#provider\_aws.requester) | >= 4.0, < 6.0 |
 
 ## Modules
 
@@ -146,5 +161,6 @@ No inputs.
 | Name | Description |
 |------|-------------|
 | <a name="output_peering"></a> [peering](#output\_peering) | n/a |
+
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

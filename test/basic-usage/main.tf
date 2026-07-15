@@ -1,3 +1,14 @@
+terraform {
+  required_version = ">= 1.5"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 4.0, < 6.0"
+    }
+  }
+}
+
 provider "aws" {
   skip_credentials_validation = true
   skip_requesting_account_id  = true
@@ -11,10 +22,12 @@ provider "aws" {
 }
 
 variable "name" {
+  type    = string
   default = "tf-basic-usage-vpc"
 }
 
 variable "tags" {
+  type = map(string)
   default = {
     example = "true"
   }

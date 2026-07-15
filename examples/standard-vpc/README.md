@@ -5,9 +5,21 @@ Example demonstrates creating a VPC using only default values, and Gateway Endpo
 Example shows using Default Tags in the provider as well as passing additional tags into the resource.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
+
 ## Examples
 
 ```hcl
+terraform {
+  required_version = ">= 1.5"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 4.0, < 6.0"
+    }
+  }
+}
+
 provider "aws" {
   default_tags {
     tags = {
@@ -49,7 +61,10 @@ output "endpoints" {
 
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0, < 6.0 |
 
 ## Providers
 
@@ -76,5 +91,6 @@ No inputs.
 |------|-------------|
 | <a name="output_endpoints"></a> [endpoints](#output\_endpoints) | n/a |
 | <a name="output_network"></a> [network](#output\_network) | n/a |
+
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

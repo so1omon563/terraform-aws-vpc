@@ -5,9 +5,21 @@ Example demonstrates setting fully custom names a variety of subnets.
 Example shows using Default Tags in the provider as well as passing additional tags into the resource.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
+
 ## Examples
 
 ```hcl
+terraform {
+  required_version = ">= 1.5"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 4.0, < 6.0"
+    }
+  }
+}
+
 provider "aws" {
   default_tags {
     tags = {
@@ -18,16 +30,17 @@ provider "aws" {
 }
 
 variable "cidr_block" {
+  type    = string
   default = "10.20.32.0/20"
 }
 
 variable "tags" {
+  type = map(string)
   default = {
     example = "true"
   }
 }
 module "vpc" {
-
   source  = "so1omon563/vpc/aws"
   version = "2.2.0"
 
@@ -89,13 +102,16 @@ resource "aws_route" "ipv4_default" {
 
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0, < 6.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.35.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.0, < 6.0 |
 
 ## Modules
 
@@ -116,7 +132,7 @@ No requirements.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_cidr_block"></a> [cidr\_block](#input\_cidr\_block) | n/a | `string` | `"10.20.32.0/20"` | no |
-| <a name="input_tags"></a> [tags](#input\_tags) | n/a | `map` | <pre>{<br>  "example": "true"<br>}</pre> | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | n/a | `map(string)` | <pre>{<br>  "example": "true"<br>}</pre> | no |
 
 ## Outputs
 
@@ -124,5 +140,6 @@ No requirements.
 |------|-------------|
 | <a name="output_custom-network"></a> [custom-network](#output\_custom-network) | n/a |
 | <a name="output_vpc"></a> [vpc](#output\_vpc) | n/a |
+
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
