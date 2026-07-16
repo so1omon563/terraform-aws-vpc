@@ -72,7 +72,7 @@ Auto-generated technical documentation is created using [`terraform-docs`](https
 | <a name="input_ingress_tcp_ports"></a> [ingress\_tcp\_ports](#input\_ingress\_tcp\_ports) | List of TCP port numbers for creating ingress NACL rules | `list(number)` | `[]` | no |
 | <a name="input_ingress_udp_ports"></a> [ingress\_udp\_ports](#input\_ingress\_udp\_ports) | List of UDP port numbers for creating ingress NACL rules | `list(number)` | `[]` | no |
 | <a name="input_ipv6_cidr"></a> [ipv6\_cidr](#input\_ipv6\_cidr) | The IPv6 CIDR block to configure in IPv6-specific NACL rules, typically the VPC IPv6 value, if assigned | `string` | `null` | no |
-| <a name="input_nacl_id"></a> [nacl\_id](#input\_nacl\_id) | The network ACL ID to create rules in | `any` | n/a | yes |
+| <a name="input_nacl_id"></a> [nacl\_id](#input\_nacl\_id) | The network ACL ID to create rules in | `string` | n/a | yes |
 
 ## Outputs
 

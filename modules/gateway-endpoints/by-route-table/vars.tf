@@ -1,4 +1,5 @@
 variable "dynamodb_policy" {
+  type        = string
   description = "Optional IAM policy to attach to the endpoint that controls access to DynamoDB"
   default     = null
 }
@@ -15,6 +16,7 @@ variable "name" {
 }
 
 variable "s3_policy" {
+  type        = string
   description = "Optional IAM policy to attach to the endpoint that controls access to S3"
   default     = null
 }

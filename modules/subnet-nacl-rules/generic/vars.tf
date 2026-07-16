@@ -1,4 +1,5 @@
 variable "nacl_id" {
+  type        = string
   description = "The network ACL ID to create rules in"
 }
 
