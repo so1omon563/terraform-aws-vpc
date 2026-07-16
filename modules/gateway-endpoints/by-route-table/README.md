@@ -45,10 +45,10 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_dynamodb_policy"></a> [dynamodb\_policy](#input\_dynamodb\_policy) | Optional IAM policy to attach to the endpoint that controls access to DynamoDB | `any` | `null` | no |
+| <a name="input_dynamodb_policy"></a> [dynamodb\_policy](#input\_dynamodb\_policy) | Optional IAM policy to attach to the endpoint that controls access to DynamoDB | `string` | `null` | no |
 | <a name="input_dynamodb_route_table_ids"></a> [dynamodb\_route\_table\_ids](#input\_dynamodb\_route\_table\_ids) | List of route table IDs to associate with the DynamoDB endpoint | `list(string)` | `[]` | no |
 | <a name="input_name"></a> [name](#input\_name) | Short, descriptive name of the environment. All resources will be named using this value as a prefix. | `string` | n/a | yes |
-| <a name="input_s3_policy"></a> [s3\_policy](#input\_s3\_policy) | Optional IAM policy to attach to the endpoint that controls access to S3 | `any` | `null` | no |
+| <a name="input_s3_policy"></a> [s3\_policy](#input\_s3\_policy) | Optional IAM policy to attach to the endpoint that controls access to S3 | `string` | `null` | no |
 | <a name="input_s3_route_table_ids"></a> [s3\_route\_table\_ids](#input\_s3\_route\_table\_ids) | List of route table IDs to associate with the S3 endpoint | `list(string)` | `[]` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of tag names and values for tags to apply to all taggable resources created by the module. Default value is a blank map to allow for using Default Tags in the provider. | `map(string)` | `{}` | no |
 
