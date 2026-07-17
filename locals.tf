@@ -1,6 +1,4 @@
 locals {
-  region               = data.aws_region.current.id
-  account_id           = data.aws_caller_identity.current.account_id
   tags                 = var.tags
   create_natgw         = length(module.private_subnets.subnets) > 0 && length(module.public_subnets.subnets) > 0
   natgw_count_defaults = var.nat_gateway_count > 0 ? min(var.nat_gateway_count, length(module.public_subnets.subnets)) : length(module.public_subnets.subnets)

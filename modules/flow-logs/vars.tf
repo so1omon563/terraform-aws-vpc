@@ -10,6 +10,8 @@ variable "kms_key_id" {
   default     = null
 }
 
+# Retained to preserve the published module interface without renaming the log group.
+# tflint-ignore: terraform_unused_declarations
 variable "name" {
   type        = string
   description = "Short, descriptive name of the environment. All resources will be named using this value as a prefix."

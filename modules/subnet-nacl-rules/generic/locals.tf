@@ -1,6 +1,4 @@
 locals {
-  region                    = data.aws_region.current.id
-  account_id                = data.aws_caller_identity.current.account_id
   all_ipv4                  = "0.0.0.0/0"
   all_ipv6                  = "::/0"
   extra_ipv4_cidr_defaults  = ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"]
