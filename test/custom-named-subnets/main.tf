@@ -10,8 +10,7 @@ terraform {
 }
 
 locals {
-  cidr_block     = "10.20.32.0/20"
-  restrict_nacls = true
+  cidr_block = "10.20.32.0/20"
 }
 
 provider "aws" {
