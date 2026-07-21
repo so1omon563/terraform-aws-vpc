@@ -1,11 +1,15 @@
 # This file is for data sources that may be required for the module to run.
 
-# Get  Subnet IDs based on VPC ID
-data "aws_subnet_ids" "subnets" {
-  vpc_id = var.vpc_id
+# Get subnet IDs based on VPC ID
+data "aws_subnets" "subnets" {
+  filter {
+    name   = "vpc-id"
+    values = [var.vpc_id]
+  }
 }
+
 # Get route tables
 data "aws_route_table" "route_tables" {
-  for_each  = data.aws_subnet_ids.subnets.ids
+  for_each  = toset(data.aws_subnets.subnets.ids)
   subnet_id = each.value
 }

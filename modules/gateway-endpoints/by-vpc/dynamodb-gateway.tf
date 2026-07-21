@@ -1,5 +1,5 @@
 resource "aws_vpc_endpoint" "dynamodb" {
-  service_name = "com.amazonaws.${data.aws_region.current.name}.dynamodb"
+  service_name = "com.amazonaws.${data.aws_region.current.region}.dynamodb"
   vpc_id       = var.vpc_id
   policy       = var.dynamodb_policy
   tags         = merge(local.tags, { Name = format("%s-dynamodb", var.name) })

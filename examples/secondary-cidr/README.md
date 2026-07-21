@@ -15,7 +15,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = ">= 4.0, < 6.0"
+      version = ">= 6.0"
     }
   }
 }
@@ -77,9 +77,9 @@ output "lambda_subnets" {
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0, < 6.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6.0 |
 
 ## Providers
 
@@ -88,7 +88,7 @@ No providers.
 ## Modules
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | <a name="module_lambda_subnets"></a> [lambda\_subnets](#module\_lambda\_subnets) | so1omon563/vpc/aws//modules/subnets | 2.2.0 |
 | <a name="module_secondary_cidr"></a> [secondary\_cidr](#module\_secondary\_cidr) | so1omon563/vpc/aws//modules/additional-cidr-block-association | 2.2.0 |
 | <a name="module_vpc"></a> [vpc](#module\_vpc) | so1omon563/vpc/aws | 2.2.0 |
@@ -104,10 +104,9 @@ No inputs.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_lambda_subnets"></a> [lambda\_subnets](#output\_lambda\_subnets) | n/a |
 | <a name="output_network"></a> [network](#output\_network) | n/a |
 | <a name="output_secondary_cidr"></a> [secondary\_cidr](#output\_secondary\_cidr) | n/a |
-
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

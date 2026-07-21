@@ -4,6 +4,8 @@ repos:
     hooks:
       - id: terraform-fmt
       - id: terraform-validate
+        # These paths require caller-supplied provider aliases and are covered by the provider 6 Terraform test fixture.
+        exclude: ^(modules/peering|test/provider6-compatibility)/
       - id: tflint
         args:
           - "--config=__GIT_ROOT__/.tflint.hcl"

@@ -15,7 +15,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = ">= 4.0, < 6.0"
+      version = ">= 6.0"
     }
   }
 }
@@ -192,20 +192,20 @@ output "endpoints" {
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0, < 6.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6.0 |
 
 ## Providers
 
 | Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.0, < 6.0 |
+| ---- | ------- |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 6.0 |
 
 ## Modules
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | <a name="module_bastion-nacl"></a> [bastion-nacl](#module\_bastion-nacl) | so1omon563/vpc/aws//modules/subnet-nacl-rules/generic | 2.2.0 |
 | <a name="module_bastion-network"></a> [bastion-network](#module\_bastion-network) | so1omon563/vpc/aws//modules/subnets | 2.2.0 |
 | <a name="module_cache-network"></a> [cache-network](#module\_cache-network) | so1omon563/vpc/aws//modules/subnets | 2.2.0 |
@@ -220,7 +220,7 @@ output "endpoints" {
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_route.ipv4_default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route) | resource |
 
 ## Inputs
@@ -230,10 +230,9 @@ No inputs.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_bastion-network"></a> [bastion-network](#output\_bastion-network) | n/a |
 | <a name="output_endpoints"></a> [endpoints](#output\_endpoints) | n/a |
 | <a name="output_vpc"></a> [vpc](#output\_vpc) | n/a |
-
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
