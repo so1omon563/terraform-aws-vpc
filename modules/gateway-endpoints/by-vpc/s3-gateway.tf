@@ -1,5 +1,5 @@
 resource "aws_vpc_endpoint" "s3" {
-  service_name = "com.amazonaws.${data.aws_region.current.name}.s3"
+  service_name = "com.amazonaws.${data.aws_region.current.region}.s3"
   vpc_id       = var.vpc_id
   policy       = var.s3_policy
   tags         = merge(local.tags, { Name : format("%s-s3", var.name) })

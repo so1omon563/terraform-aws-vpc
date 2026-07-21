@@ -15,15 +15,15 @@ Auto-generated technical documentation is created using [`terraform-docs`](https
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0, < 6.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6.0 |
 
 ## Providers
 
 | Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.39.1 |
+| ---- | ------- |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 6.0 |
 
 ## Modules
 
@@ -32,7 +32,7 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_network_acl.nacl](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_acl) | resource |
 | [aws_network_acl_rule.ipv4_egress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_acl_rule) | resource |
 | [aws_network_acl_rule.ipv4_ingress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_acl_rule) | resource |
@@ -42,13 +42,11 @@ No modules.
 | [aws_route_table_association.route](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table_association) | resource |
 | [aws_subnet.subnet](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet) | resource |
 | [aws_availability_zones.az](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) | data source |
-| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
-| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_ipv4_cidr_blocks"></a> [ipv4\_cidr\_blocks](#input\_ipv4\_cidr\_blocks) | List of IPv4 cidr blocks to configure subnets | `list(string)` | n/a | yes |
 | <a name="input_ipv6_cidr_blocks"></a> [ipv6\_cidr\_blocks](#input\_ipv6\_cidr\_blocks) | List of IPv6 cidr blocks to configure subnets. If specified, length must match ipv4\_cidr\_blocks | `list(string)` | `[]` | no |
 | <a name="input_isolate_route_tables"></a> [isolate\_route\_tables](#input\_isolate\_route\_tables) | If `true`, a route table will be created for each subnet, otherwise a single route table will be created for all subnets managed by this module | `bool` | `false` | no |
@@ -65,11 +63,10 @@ No modules.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_nacl"></a> [nacl](#output\_nacl) | A collection of outputs from the NACL created by this module. |
 | <a name="output_route_table_ids"></a> [route\_table\_ids](#output\_route\_table\_ids) | A list of the route table ids created by this module. |
 | <a name="output_route_table_names"></a> [route\_table\_names](#output\_route\_table\_names) | A list of the route table names created by this module. |
 | <a name="output_subnets"></a> [subnets](#output\_subnets) | A collection of outputs from the created Subnets. |
-
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

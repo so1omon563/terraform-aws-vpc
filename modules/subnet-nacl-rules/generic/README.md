@@ -26,26 +26,26 @@ Auto-generated technical documentation is created using [`terraform-docs`](https
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0, < 6.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6.0 |
 
 ## Providers
 
 | Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.39.1 |
+| ---- | ------- |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 6.0 |
 
 ## Modules
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | <a name="module_base"></a> [base](#module\_base) | ../service | n/a |
 
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_network_acl_rule.ipv4-tcp-egress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_acl_rule) | resource |
 | [aws_network_acl_rule.ipv4-tcp-ingress-ephemeral](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_acl_rule) | resource |
 | [aws_network_acl_rule.ipv4-udp-egress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_acl_rule) | resource |
@@ -58,17 +58,15 @@ Auto-generated technical documentation is created using [`terraform-docs`](https
 | [aws_network_acl_rule.vpc-ipv4-ingress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_acl_rule) | resource |
 | [aws_network_acl_rule.vpc-ipv6-egress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_acl_rule) | resource |
 | [aws_network_acl_rule.vpc-ipv6-ingress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_acl_rule) | resource |
-| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
-| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_egress_tcp_ports"></a> [egress\_tcp\_ports](#input\_egress\_tcp\_ports) | List of additional TCP port numbers for creating egress NACL rules, combined with values in `local.egress_udp_ports_defaults` - `[80, 443]` | `list(number)` | `[]` | no |
 | <a name="input_egress_udp_ports"></a> [egress\_udp\_ports](#input\_egress\_udp\_ports) | List of additional UDP port numbers for creating egress NACL rules, combined with values in `local.egress_udp_ports_defaults` - `[123]` | `list(number)` | `[]` | no |
 | <a name="input_enable_ipv6"></a> [enable\_ipv6](#input\_enable\_ipv6) | Toggle to create NACL rules for the value specified in ipv6\_cidr\_block | `bool` | `false` | no |
-| <a name="input_extra_ipv4_cidr"></a> [extra\_ipv4\_cidr](#input\_extra\_ipv4\_cidr) | List of additional CIDR blocks to grant full access NACL rules.<br>  Combined with values in `local.extra_ipv4_cidr_defaults` - `["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"]` | `list(string)` | `[]` | no |
+| <a name="input_extra_ipv4_cidr"></a> [extra\_ipv4\_cidr](#input\_extra\_ipv4\_cidr) | List of additional CIDR blocks to grant full access NACL rules.<br/>  Combined with values in `local.extra_ipv4_cidr_defaults` - `["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"]` | `list(string)` | `[]` | no |
 | <a name="input_ingress_tcp_ports"></a> [ingress\_tcp\_ports](#input\_ingress\_tcp\_ports) | List of TCP port numbers for creating ingress NACL rules | `list(number)` | `[]` | no |
 | <a name="input_ingress_udp_ports"></a> [ingress\_udp\_ports](#input\_ingress\_udp\_ports) | List of UDP port numbers for creating ingress NACL rules | `list(number)` | `[]` | no |
 | <a name="input_ipv6_cidr"></a> [ipv6\_cidr](#input\_ipv6\_cidr) | The IPv6 CIDR block to configure in IPv6-specific NACL rules, typically the VPC IPv6 value, if assigned | `string` | `null` | no |
@@ -77,6 +75,5 @@ Auto-generated technical documentation is created using [`terraform-docs`](https
 ## Outputs
 
 No outputs.
-
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

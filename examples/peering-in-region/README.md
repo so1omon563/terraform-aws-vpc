@@ -15,7 +15,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = ">= 4.0, < 6.0"
+      version = ">= 6.0"
     }
   }
 }
@@ -126,21 +126,21 @@ output "peering" { value = module.pcx }
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0, < 6.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6.0 |
 
 ## Providers
 
 | Name | Version |
-|------|---------|
-| <a name="provider_aws.accepter"></a> [aws.accepter](#provider\_aws.accepter) | >= 4.0, < 6.0 |
-| <a name="provider_aws.requester"></a> [aws.requester](#provider\_aws.requester) | >= 4.0, < 6.0 |
+| ---- | ------- |
+| <a name="provider_aws.accepter"></a> [aws.accepter](#provider\_aws.accepter) | >= 6.0 |
+| <a name="provider_aws.requester"></a> [aws.requester](#provider\_aws.requester) | >= 6.0 |
 
 ## Modules
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | <a name="module_acp"></a> [acp](#module\_acp) | so1omon563/vpc/aws | 2.2.0 |
 | <a name="module_pcx"></a> [pcx](#module\_pcx) | so1omon563/vpc/aws//modules/peering | 2.2.0 |
 | <a name="module_req"></a> [req](#module\_req) | so1omon563/vpc/aws | 2.2.0 |
@@ -148,7 +148,7 @@ output "peering" { value = module.pcx }
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_route.acp_routes](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route) | resource |
 | [aws_route.req_routes](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route) | resource |
 
@@ -159,8 +159,7 @@ No inputs.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_peering"></a> [peering](#output\_peering) | n/a |
-
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
